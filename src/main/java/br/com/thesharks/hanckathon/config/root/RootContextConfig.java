@@ -1,14 +1,14 @@
 package br.com.thesharks.hanckathon.config.root;
 
 
+import javax.persistence.EntityManagerFactory;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
-
-import javax.persistence.EntityManagerFactory;
 
 /**
  *
@@ -18,8 +18,8 @@ import javax.persistence.EntityManagerFactory;
  */
 
 @Configuration
-@ComponentScan({"calories.tracker.app.services", "calories.tracker.app.dao",
-        "calories.tracker.app.init", " calories.tracker.app.security"})
+@ComponentScan({"br.com.thesharks.hanckathon.app.services", "br.com.thesharks.hanckathon.app.dao",
+        "br.com.thesharks.hanckathon.app.init", "br.com.thesharks.hanckathon.app.security"})
 public class RootContextConfig {
 
     @Bean(name = "transactionManager")

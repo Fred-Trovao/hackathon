@@ -1,6 +1,9 @@
 package br.com.thesharks.hanckathon.config.root;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -11,9 +14,6 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import br.com.thesharks.hanckathon.app.init.TestDataInitializer;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  *
@@ -48,7 +48,7 @@ public class DevelopmentConfiguration {
 
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource);
-        entityManagerFactoryBean.setPackagesToScan(new String[]{"calories.tracker.app.model"});
+        entityManagerFactoryBean.setPackagesToScan(new String[]{"br.com.thesharks.hanckathon.app.model"});
         entityManagerFactoryBean.setLoadTimeWeaver(new InstrumentationLoadTimeWeaver());
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 
