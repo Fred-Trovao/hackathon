@@ -1,9 +1,10 @@
 package br.com.thesharks.hackathon.persist.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import br.com.thesharks.hackathon.persist.entity.Authority;
 
-public interface AuthorityRepository extends JpaRepository<Authority, Long> {
+@Repository
+public interface AuthorityRepository extends EntidadeRepository<Authority> {
 
 }

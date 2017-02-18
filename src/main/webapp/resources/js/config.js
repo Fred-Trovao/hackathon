@@ -62,8 +62,27 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
 	    loginRequired : false,
 	    authorizedRoles : [ USER_ROLES.all ]
 	}
-    }).state('cadastrar-interesse', {
-	url : "/login",
+    }).state('loading', {
+	url : "/loading",
+	templateUrl : "resources/views/common/loading.html",
+	data : {
+	    pageTitle : 'Example view'
+	},
+	resolve: {
+            loadPlugin: function ($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                    {
+                        files: ['resources/css/plugins/iCheck/custom.css','resources/js/vendor/plugins/iCheck/icheck.min.js']
+                    }
+                ]);
+            }
+        },
+	access : {
+	    loginRequired : false,
+	    authorizedRoles : [ USER_ROLES.all ]
+	}
+    }).state('index.cadastrar-interesse', {
+	url : "/cadastrar-interesse",
 	templateUrl : "resources/views/cadastrar-interesse.html",
 	data : {
 	    pageTitle : 'Example view'
@@ -94,8 +113,8 @@ inspiniaApp.config(config).run(function($rootScope, $state, $location, $http, Au
 
     $rootScope.$state = $state;
 
-    $rootScope.$on('$routeChangeStart', function(event, next) {
-
+    $rootScope.$on('$stateChangeStart', function(event, next) {
+	
 	if (next.originalPath === "/login" && $rootScope.authenticated) {
 	    event.preventDefault();
 	} else if (next.access && next.access.loginRequired && !$rootScope.authenticated) {
@@ -107,9 +126,10 @@ inspiniaApp.config(config).run(function($rootScope, $state, $location, $http, Au
 	}
     });
 
-    $rootScope.$on('$routeChangeSuccess', function(scope, next, current) {
+    $rootScope.$on('$stateChangeSuccess', function(scope, next, current) {
 	$rootScope.$evalAsync(function() {
-	    $.material.init();
+	    //Verificar
+	    //$.material.init();
 	});
     });
 

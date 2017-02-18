@@ -9,7 +9,8 @@ var inspiniaApp = angular.module('inspinia', [
         'pascalprecht.translate',       // Angular Translate
         'ngIdle',                       // Idle timer
         'ngSanitize',                   // ngSanitize
-        'http-auth-interceptor'
+        'http-auth-interceptor',
+        'angular-spinkit'
     ]);
 
 // Other libraries are loaded dynamically in the config.js file using the library ocLazyLoad

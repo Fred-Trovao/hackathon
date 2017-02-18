@@ -15,8 +15,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.thesharks.hackathon.persist.entity.Authority;
-import br.com.thesharks.hackathon.persist.entity.User;
-import br.com.thesharks.hackathon.persist.repository.UserRepository;
+import br.com.thesharks.hackathon.persist.entity.Usuario;
+import br.com.thesharks.hackathon.persist.repository.UsuarioRepository;
 
 /**
  * Authenticate a user from the database.
@@ -27,17 +27,17 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private final Logger log = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
 
     @Autowired
-    private UserRepository userRepo;
+    private UsuarioRepository userRepo;
 
     @Override
     @Transactional
     public UserDetails loadUserByUsername(final String login) {
         log.debug("Authenticating {}", login);
 
-        User user = userRepo.findByLogin(login);
+        Usuario user = userRepo.findByLogin(login);
         if (user == null) {
             throw new UsernameNotFoundException("User " + login + " was not found in the database");
-        } else if (!user.getEnabled()) {
+        } else if (!user.getAtivado()) {
             throw new UserNotEnabledException("User " + login + " was not enabled");
         }
 
@@ -47,7 +47,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             grantedAuthorities.add(grantedAuthority);
         }
 
-        return new org.springframework.security.core.userdetails.User(login, user.getPassword(),
+        return new org.springframework.security.core.userdetails.User(login, user.getSenha(),
                 grantedAuthorities);
     }
 }
