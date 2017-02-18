@@ -1,9 +1,9 @@
 /**
  * INSPINIA - Responsive Admin Theme
- *
+ * 
  * Inspinia theme use AngularUI Router to manage routing and views Each view are
  * defined as state. Initial there are written state for all view in theme.
- *
+ * 
  */
 function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_ROLES) {
     $urlRouterProvider.otherwise("/index/main");
@@ -18,14 +18,14 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
     .state('index', {
 	abstract : true,
 	url : "/index",
-	templateUrl : "views/common/content.html",
+	templateUrl : "resources/views/common/content.html",
 	access : {
 	    loginRequired : true,
 	    authorizedRoles : [ USER_ROLES.all ]
 	}
     }).state('index.main', {
 	url : "/main",
-	templateUrl : "views/main.html",
+	templateUrl : "resources/views/main.html",
 	data : {
 	    pageTitle : 'Example view'
 	},
@@ -35,7 +35,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
 	}
     }).state('index.minor', {
 	url : "/minor",
-	templateUrl : "views/minor.html",
+	templateUrl : "resources/views/minor.html",
 	data : {
 	    pageTitle : 'Example view'
 	},
@@ -45,7 +45,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
 	}
     }).state('login', {
 	url : "/login",
-	templateUrl : "views/public/login.html",
+	templateUrl : "resources/views/login.html",
 	data : {
 	    pageTitle : 'Example view'
 	},
@@ -56,13 +56,13 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
     })
 };
 
-myapp.constant('USER_ROLES', {
+inspiniaApp.constant('USER_ROLES', {
     all : '*',
     admin : 'admin',
     user : 'user'
 });
 
-angular.module('inspinia').config(config).run(function($rootScope, $state, $location, $http, AuthSharedService, Session, USER_ROLES, $q, $timeout) {
+inspiniaApp.config(config).run(function($rootScope, $state, $location, $http, AuthSharedService, Session, USER_ROLES, $q, $timeout) {
 
     $rootScope.$state = $state;
 

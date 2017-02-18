@@ -15,21 +15,24 @@
 
 							<p>Sign in today for more expirience.</p>
 
-							<form role="form">
+							<form role="form" novalidate ng-controller="LoginController">
 								<div class="form-group">
 									<label>Email</label> 
-									<input type="email" placeholder="Enter email" class="form-control">
+									<input type="text" placeholder="Enter email" class="form-control" ng-model="username">
+									<span ng-show="authenticationError" class="help-block">
+		                                Please check your credentials and try again.
+		                            </span>
 								</div>
 								<div class="form-group">
 									<label>Password</label> 
-									<input type="password" placeholder="Password" class="form-control">
+									<input type="password" placeholder="Password" class="form-control" ng-model="password">
 								</div>
 								<div>
-									<button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit">
+									<button class="btn btn-sm btn-primary pull-right m-t-n-xs" ng-click="login()" >
 										<strong>Log in</strong>
 									</button>
 									<label> 
-										<input icheck type="checkbox" ng-model="main.unCheck"> Remember me
+										<input icheck type="checkbox" ng-model="rememberMe"> Remember me
 									</label>
 								</div>
 							</form>

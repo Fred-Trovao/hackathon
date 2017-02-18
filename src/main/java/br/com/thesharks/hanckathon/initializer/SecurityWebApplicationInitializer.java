@@ -1,0 +1,8 @@
+package br.com.thesharks.hanckathon.initializer;
+
+import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
+
+public class SecurityWebApplicationInitializer
+        extends AbstractSecurityWebApplicationInitializer {
+
+}
