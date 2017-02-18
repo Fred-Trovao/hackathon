@@ -27,8 +27,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.thesharks.hackathon.persist.entity.Token;
 import br.com.thesharks.hackathon.persist.entity.User;
-import br.com.thesharks.hackathon.persist.repository.TokenRepo;
-import br.com.thesharks.hackathon.persist.repository.UserRepo;
+import br.com.thesharks.hackathon.persist.repository.TokenRepository;
+import br.com.thesharks.hackathon.persist.repository.UserRepository;
 
 /**
  * Custom implementation of Spring Security's RememberMeServices.
@@ -66,10 +66,10 @@ public class RememberMeServices extends AbstractRememberMeServices {
     private SecureRandom random;
 
     @Autowired
-    private TokenRepo tokenRepo;
+    private TokenRepository tokenRepo;
 
     @Autowired
-    private UserRepo userRepo;
+    private UserRepository userRepo;
 
     @Autowired
     public RememberMeServices(Environment env,

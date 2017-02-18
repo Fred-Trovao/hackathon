@@ -12,7 +12,7 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationSu
 import org.springframework.stereotype.Component;
 
 import br.com.thesharks.hackathon.persist.entity.User;
-import br.com.thesharks.hackathon.persist.repository.UserRepo;
+import br.com.thesharks.hackathon.persist.repository.UserRepository;
 
 /**
  * Spring Security success handler, specialized for Ajax requests.
@@ -21,7 +21,7 @@ import br.com.thesharks.hackathon.persist.repository.UserRepo;
 public class RestAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
     @Autowired
-    private UserRepo userService;
+    private UserRepository userService;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,

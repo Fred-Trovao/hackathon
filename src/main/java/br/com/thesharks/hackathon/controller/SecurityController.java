@@ -11,18 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.thesharks.hackathon.persist.entity.Token;
 import br.com.thesharks.hackathon.persist.entity.User;
-import br.com.thesharks.hackathon.persist.repository.TokenRepo;
-import br.com.thesharks.hackathon.persist.repository.UserRepo;
+import br.com.thesharks.hackathon.persist.repository.TokenRepository;
+import br.com.thesharks.hackathon.persist.repository.UserRepository;
 import br.com.thesharks.hackathon.security.SecurityUtils;
 
 @RestController
 public class SecurityController {
 
     @Autowired
-    private UserRepo userRepo;
+    private UserRepository userRepo;
 
     @Autowired
-    private TokenRepo tokenRepo;
+    private TokenRepository tokenRepo;
 
     @RequestMapping(value = "/security/account", method = RequestMethod.GET)
     public @ResponseBody User getUserAccount() {

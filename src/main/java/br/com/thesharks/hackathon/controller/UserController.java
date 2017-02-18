@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.thesharks.hackathon.persist.entity.User;
-import br.com.thesharks.hackathon.persist.repository.UserRepo;
+import br.com.thesharks.hackathon.persist.repository.UserRepository;
 
 @RestController
 public class UserController {
@@ -21,7 +21,7 @@ public class UserController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
-    private UserRepo userRepo;
+    private UserRepository userRepo;
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public @ResponseBody List<User> usersList() {

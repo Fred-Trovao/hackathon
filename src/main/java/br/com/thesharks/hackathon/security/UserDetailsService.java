@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.thesharks.hackathon.persist.entity.Authority;
 import br.com.thesharks.hackathon.persist.entity.User;
-import br.com.thesharks.hackathon.persist.repository.UserRepo;
+import br.com.thesharks.hackathon.persist.repository.UserRepository;
 
 /**
  * Authenticate a user from the database.
@@ -26,7 +26,7 @@ public class UserDetailsService implements org.springframework.security.core.use
     private final Logger log = LoggerFactory.getLogger(UserDetailsService.class);
 
     @Autowired
-    private UserRepo userRepo;
+    private UserRepository userRepo;
 
     @Override
     @Transactional
