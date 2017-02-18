@@ -23,7 +23,7 @@ import br.com.thesharks.hackathon.security.RestUnauthorizedEntryPoint;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-@ComponentScan(basePackages = { "br.com.thesharks.hanckathon.security" })
+@ComponentScan(basePackages = { "br.com.thesharks.hackathon.security" })
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	private static final Logger logger = LoggerFactory.getLogger(SecurityConfig.class);

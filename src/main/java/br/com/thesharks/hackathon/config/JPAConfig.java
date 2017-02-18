@@ -17,8 +17,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan("br.com.thesharks.hanckathon.persist")
-@EnableJpaRepositories("br.com.thesharks.hanckathon.persist")
+@ComponentScan("br.com.thesharks.hackathon.persist")
+@EnableJpaRepositories("br.com.thesharks.hackathon.persist")
 public class JPAConfig {
 
     @Bean(name = "dataSource")
@@ -31,7 +31,7 @@ public class JPAConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(dataSource());
-        factoryBean.setPackagesToScan("br.com.thesharks.hanckathon.persist");
+        factoryBean.setPackagesToScan("br.com.thesharks.hackathon.persist");
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         vendorAdapter.setShowSql(true);
         factoryBean.setJpaVendorAdapter(vendorAdapter);

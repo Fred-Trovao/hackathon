@@ -3,6 +3,7 @@ package br.com.thesharks.hackathon.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -15,7 +16,8 @@ import org.springframework.web.servlet.resource.ResourceUrlEncodingFilter;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = { "br.com.thesharks.hanckathon.controller" })
+@Import({SecurityConfig.class})
+@ComponentScan(basePackages = { "br.com.thesharks.hackathon.controller" })
 public class MvcConfig extends WebMvcConfigurerAdapter {
 
     @Bean
