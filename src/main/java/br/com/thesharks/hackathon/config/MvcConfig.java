@@ -34,6 +34,9 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
                 .resourceChain(true)
                 .addResolver(new GzipResourceResolver())
                 .addResolver(new PathResourceResolver());
+        
+        registry.addResourceHandler("/favicon.ico")
+        .addResourceLocations("/resources/favicon.ico");
     }
 
     @Override
