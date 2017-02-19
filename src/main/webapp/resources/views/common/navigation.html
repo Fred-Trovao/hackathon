@@ -13,7 +13,7 @@
                             </span>
                     </a>
                     <ul uib-dropdown-menu="" class="animated fadeInRight m-t-xs">
-                        <li><a href="">Logout</a></li>
+                        <li><a ng-controller="LogoutController" ng-click="logout()">Logout</a></li>
                     </ul>
                 </div>
                 <div class="logo-element">
@@ -23,10 +23,10 @@
             </li>
 
             <li ui-sref-active="active">
-                <a ui-sref="index.main"><i class="fa fa-laptop"></i> <span class="nav-label">Main page</span> </a>
+                <a ui-sref="index.cadastrar-interesse"><i class="fa fa-laptop"></i> <span class="nav-label">Cadastrar interesse</span> </a>
             </li>
             <li ui-sref-active="active">
-                <a ui-sref="index.minor"><i class="fa fa-desktop"></i> <span class="nav-label">Minor page</span></a>
+                <a ui-sref="index.listar-interesses"><i class="fa fa-desktop"></i> <span class="nav-label">Negociar</span></a>
             </li>
         </ul>
 

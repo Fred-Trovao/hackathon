@@ -28,7 +28,7 @@ public class JPAConfig {
         dataSource.setDriverClassName("org.postgresql.Driver");
         dataSource.setUrl("jdbc:postgresql://localhost:5432/hackathon?loglevel=0");
         dataSource.setUsername("postgres");
-        dataSource.setPassword("root");
+        dataSource.setPassword("oex9536");
         return dataSource;
     }
 

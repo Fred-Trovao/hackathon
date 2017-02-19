@@ -20,7 +20,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
 	url : "/index",
 	templateUrl : "resources/views/common/content.html",
 	access : {
-	    loginRequired : false,
+	    loginRequired : true,
 	    authorizedRoles : [ USER_ROLES.all ]
 	}
     }).state('index.main', {
@@ -30,7 +30,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
 	    pageTitle : 'Example view'
 	},
 	access : {
-	    loginRequired : false,
+	    loginRequired : true,
 	    authorizedRoles : [ USER_ROLES.all ]
 	}
     }).state('index.minor', {
@@ -106,7 +106,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
                 }
             },
     	access : {
-    	    loginRequired : false,
+    	    loginRequired : true,
     	    authorizedRoles : [ USER_ROLES.all ]
     	}
         }).state("error", {
@@ -172,7 +172,7 @@ inspiniaApp.config(config).run(function($rootScope, $state, $location, $http, Au
     $rootScope.$on('event:auth-loginRequired', function(event, data) {
 	if ($rootScope.loadingAccount && data.status !== 401) {
 	    $rootScope.requestedUrl = $location.path()
-	    $location.path('/loading');
+	    $state.go('loading');
 	} else {
 		$rootScope.bodyClass = 'gray-bg';
 	    Session.invalidate();
