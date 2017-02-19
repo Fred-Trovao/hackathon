@@ -65,15 +65,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-//		http.headers().disable().csrf().disable().authorizeRequests().antMatchers("/failure").permitAll()
-//				.antMatchers("/v2/api-docs").hasAnyAuthority("admin")
-//				.antMatchers("/users/**").hasAnyAuthority("admin")
-//				.anyRequest().authenticated().and().exceptionHandling()
-//				.authenticationEntryPoint(restAuthenticationEntryPoint).accessDeniedHandler(restAccessDeniedHandler)
-//				.and().formLogin().loginProcessingUrl("/authenticate").successHandler(restAuthenticationSuccessHandler)
-//				.failureHandler(restAuthenticationFailureHandler).usernameParameter("username")
-//				.passwordParameter("password").permitAll().and().logout().logoutUrl("/logout")
-//				.logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler()).deleteCookies("JSESSIONID")
-//				.permitAll().and().rememberMe().rememberMeServices(rememberMeServices).key(REMEMBER_ME_KEY).and();
+		http.headers().disable().csrf().disable().authorizeRequests().antMatchers("/failure").permitAll()
+				.antMatchers("/v2/api-docs").hasAnyAuthority("admin")
+				.antMatchers("/users/**").hasAnyAuthority("admin")
+				.anyRequest().authenticated().and().exceptionHandling()
+				.authenticationEntryPoint(restAuthenticationEntryPoint).accessDeniedHandler(restAccessDeniedHandler)
+				.and().formLogin().loginProcessingUrl("/authenticate").successHandler(restAuthenticationSuccessHandler)
+				.failureHandler(restAuthenticationFailureHandler).usernameParameter("username")
+				.passwordParameter("password").permitAll().and().logout().logoutUrl("/logout")
+				.logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler()).deleteCookies("JSESSIONID")
+				.permitAll().and().rememberMe().rememberMeServices(rememberMeServices).key(REMEMBER_ME_KEY).and();
 	}
 }

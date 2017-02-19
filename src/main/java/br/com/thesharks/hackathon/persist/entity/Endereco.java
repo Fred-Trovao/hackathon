@@ -2,10 +2,12 @@ package br.com.thesharks.hackathon.persist.entity;
 
 import java.io.Serializable;
 
-import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-@Embeddable
-public class Endereco implements Serializable {
+@Entity
+@Table(name="endereco")
+public class Endereco extends EntidadeAbstrata implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

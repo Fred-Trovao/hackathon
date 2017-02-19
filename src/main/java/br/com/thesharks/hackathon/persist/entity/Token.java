@@ -6,16 +6,18 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "token")
-public class Token extends EntidadeAbstrata implements Serializable {
+public class Token implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@Id
     private String series;
-
+	
     private String value;
 
     private Date date;

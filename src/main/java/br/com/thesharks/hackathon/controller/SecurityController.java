@@ -27,7 +27,7 @@ public class SecurityController {
 	@GetMapping(value = "/account")
 	public Usuario getUserAccount() {
 		Usuario user = userRepo.findByLogin(SecurityUtils.getCurrentLogin());
-		user.setSenha(null);
+		
 		return user;
 	}
 

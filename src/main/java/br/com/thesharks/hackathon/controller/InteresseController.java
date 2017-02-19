@@ -18,10 +18,8 @@ public class InteresseController {
 	
 	@PostMapping
 	public Interesse incluir(@RequestBody Interesse interesse) {
-		System.out.println("oi");
-				return null;
 				
-//		interesseService.incluir(interesse);
-//		return interesse;
+		interesseService.incluir(interesse);
+		return interesse;
 	}
 }

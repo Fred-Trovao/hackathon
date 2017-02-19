@@ -7,7 +7,7 @@
  */
 function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_ROLES) {
     $urlRouterProvider.otherwise("/index/main");
-
+    
     $ocLazyLoadProvider.config({
 	// Set to true if you want to see what and when is dynamically loaded
 	debug : false
@@ -46,6 +46,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
     }).state('login', {
 	url : "/login",
 	templateUrl : "resources/views/login.html",
+	bodyClass: 'gray-bg',
 	data: { pageTitle: 'Login' },
 	resolve: {
             loadPlugin: function ($ocLazyLoad) {
@@ -98,7 +99,6 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
 	    loginRequired : false,
 	    authorizedRoles : [ USER_ROLES.all ]
 	}
-
     }).state('index.listar-interesses', {
     	url : "/listar-interesses",
     	templateUrl : "resources/views/listar-interesses.html",
@@ -138,6 +138,7 @@ inspiniaApp.constant('USER_ROLES', {
 inspiniaApp.config(config).run(function($rootScope, $state, $location, $http, AuthSharedService, Session, USER_ROLES, $q, $timeout) {
 
     $rootScope.$state = $state;
+    $rootScope.bodyClass = 'gray-bg';
 
     $rootScope.$on('$stateChangeStart', function(event, next) {
 
@@ -161,9 +162,10 @@ inspiniaApp.config(config).run(function($rootScope, $state, $location, $http, Au
 
     // Call when the the client is confirmed
     $rootScope.$on('event:auth-loginConfirmed', function(event, data) {
+    $rootScope.bodyClass = undefined;
 	console.log('login confirmed start ' + data);
 	$rootScope.loadingAccount = false;
-	var nextLocation = ($rootScope.requestedUrl ? $rootScope.requestedUrl : "/home");
+	var nextLocation = ($rootScope.requestedUrl ? $rootScope.requestedUrl : "/index");
 	var delay = ($location.path() === "/loading" ? 1500 : 0);
 
 	$timeout(function() {
@@ -181,6 +183,7 @@ inspiniaApp.config(config).run(function($rootScope, $state, $location, $http, Au
 	    $rootScope.requestedUrl = $location.path()
 	    $location.path('/loading');
 	} else {
+		$rootScope.bodyClass = 'gray-bg';
 	    Session.invalidate();
 	    $rootScope.authenticated = false;
 	    $rootScope.loadingAccount = false;
@@ -197,6 +200,7 @@ inspiniaApp.config(config).run(function($rootScope, $state, $location, $http, Au
 
     // Call when the user logs out
     $rootScope.$on('event:auth-loginCancelled', function() {
+    $rootScope.bodyClass = 'gray-bg';
 	$location.path('/login').replace();
     });
 
