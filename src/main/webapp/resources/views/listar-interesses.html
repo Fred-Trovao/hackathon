@@ -99,15 +99,15 @@
 			                    <div ng-if="!interesse.link" class="feed-element">
 			                        <a ui-sref="profile" class="pull-left">
 			                            <img alt="image" class="img-circle" src="resources/img/a2.jpg">
-			                        </a>
+			                         </a>
 			
 			                        <div class="media-body ">
 			                            <small class="pull-right">2h atrás</small>
-			                            <strong>{{interesse.usuario.nome}}</strong> disse que quer um <strong>Projeto de Interiores</strong>
+			                            <strong>{{interesse.usuario.nome}}</strong> disse que quer um <strong>{{interesse.nome}}</strong>
 			                            <span class="text-muted">. O interesse dele não tem link mas ele informou como o negócio vai ser parcelado. Se liga...</span><br><br>
 			                            
-										<p>O valor da parcela é <span class="h5"><strong>R$ 34234,00</strong></span> e pode ser dividido em até <span class="h5"><strong>5x</strong></span></p>
-										<p>o interesse custa no total <span class="h5">R$ 34234,00</span>, e o que ela quer te repassar é <span class="h4"><strong>R$3400,51</strong></span>. Faz as contas e veja dá</p>
+										<p>O valor da parcela é <span class="h5"><strong>R$ {{interesse.valorDaParcela}}</strong></span> e pode ser dividido em até <span class="h5"><strong>{{interesse.quantidadeDeParcelas}}x</strong></span></p>
+										<p>o interesse custa no total <span class="h5">R$ {{interesse.valorDaParcela}}</span>, e o que ela quer te repassar é <span class="h4"><strong>R$ {{interesse.valorDoRepasse}}</strong></span>. Faz as contas e veja dá</p>
 										<div class="col-sm-12">
 											<button class="btn btn-primary pull-right">Contato</button>
 										</div>

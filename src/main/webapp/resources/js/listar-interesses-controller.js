@@ -1,5 +1,6 @@
-angular.module('inspinia').controller('ListarInteressesController', function($rootScope, $scope, AuthSharedService) {
+angular.module('inspinia').controller('ListarInteressesController', function($rootScope, $scope, AuthSharedService, $http) {
     
+	
 	$scope.listaInteresse = [
 		{
 			id : 1,
@@ -33,7 +34,8 @@ angular.module('inspinia').controller('ListarInteressesController', function($ro
 				email : 'mark@msn.com',
 				telefone : '83 88888-8888',
 			}
-		}
+		},
+		
 	];
 	
 
