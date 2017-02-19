@@ -4,8 +4,7 @@ inspiniaApp.service('Session', function () {
     this.create = function (data) {
         this.id = data.id;
         this.login = data.login;
-        this.firstName = data.firstName;
-        this.lastName = data.familyName;
+        this.nome = data.nome;
         this.email = data.email;
         this.userRoles = [];
         angular.forEach(data.authorities, function (value, key) {

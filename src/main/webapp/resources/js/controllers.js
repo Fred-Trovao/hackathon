@@ -6,9 +6,9 @@
 /**
  * MainCtrl - controller
  */
-function MainCtrl() {
+function MainCtrl(Session) {
 
-    this.userName = 'Usuario';
+    this.userName = Session.nome;
     this.helloText = 'Welcome in SeedProject';
     this.descriptionText = 'It is an application skeleton for a typical AngularJS web app. You can use it to quickly bootstrap your angular webapp projects and dev environment for these projects.';
 
@@ -21,12 +21,12 @@ angular.module('inspinia').controller('MainCtrl', MainCtrl)
 .controller('LoginController', function($rootScope, $scope, AuthSharedService, $state) {
     $scope.rememberMe = true;
     $scope.usuario
-    
+
     $scope.cadastrarUsuario = function(){
     	console.log("ae");
     	$state.go('cadastrar-usuario');
     }
-    
+
     $scope.efetuarCadastro = function(){
     	if($scope.usuario != null){
     		$http.post("/usuarios/salvarUsuario",$scope.usuario).success(function(response) {
@@ -37,7 +37,7 @@ angular.module('inspinia').controller('MainCtrl', MainCtrl)
     	    });
     		}
     }
-    
+
     $scope.login = function() {
 
 	if ($scope.form.$valid) {
