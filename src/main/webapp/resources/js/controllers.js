@@ -21,8 +21,17 @@ angular.module('inspinia').controller('MainCtrl', MainCtrl)
 .controller('LoginController', function($rootScope, $scope, AuthSharedService) {
     $scope.rememberMe = true;
     $scope.login = function() {
-	$rootScope.authenticationError = false;
-	AuthSharedService.login($scope.username, $scope.password, $scope.rememberMe);
+
+	if ($scope.form.$valid) {
+	    $rootScope.authenticationError = false;
+	    AuthSharedService.login($scope.username, $scope.password, $scope.rememberMe).then(function() {
+
+	    }, function() {
+		swal("Epaaaa..", "Voc\u00ea est\u00e1 tentando logar com uns dados que a gente n\u00e3o conhece!", "error");
+	    });
+        } else {
+            $scope.form.submitted = true;
+        }
     }})
 .controller('ErrorController', function($scope, $routeParams) {
     $scope.code = $routeParams.code;
@@ -39,8 +48,8 @@ angular.module('inspinia').controller('MainCtrl', MainCtrl)
 	$scope.message = "Oops! Um erro inesperado aconteceu."
     }
 }).controller('LogoutController', function (AuthSharedService, $scope) {
-    
+
     $scope.logout = function() {
-	AuthSharedService.logout();	
+	AuthSharedService.logout();
     }
 });
