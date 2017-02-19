@@ -35,8 +35,6 @@ public class Interesse extends EntidadeAbstrata implements Serializable {
 
 	private Integer quantidadeDeParcelas;
 
-	private BigDecimal juros;
-
 	@ManyToOne
 	@JoinColumn(nullable = false)
 	private Usuario usuario;
@@ -99,14 +97,6 @@ public class Interesse extends EntidadeAbstrata implements Serializable {
 
 	public void setQuantidadeDeParcelas(Integer quantidadeDeParcelas) {
 		this.quantidadeDeParcelas = quantidadeDeParcelas;
-	}
-
-	public BigDecimal getJuros() {
-		return juros;
-	}
-
-	public void setJuros(BigDecimal juros) {
-		this.juros = juros;
 	}
 
 	public Usuario getUsuario() {

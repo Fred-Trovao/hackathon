@@ -43,7 +43,7 @@
 									<div class="row">
 										<div class="form-group col-sm-6">
 											<label>Agora o principal! Diz aí o valor cheio</label> 
-											<input type="text" class="form-control" ng-model="interesse.valorTotal">
+											<input type="text" class="form-control" ng-model="interesse.valorDoInteresse" ui-money-mask>
 										</div>
 									</div>
 									<br/>
@@ -74,11 +74,11 @@
 									</div>
 									<div class="form-group">
 										<label>Se o valor tem desconto à vista, coloca aí</label> 
-										<input type="text" class="form-control" ng-model="interesse.valorAVista">
+										<input type="text" class="form-control" ng-model="interesse.valorAVista" ui-money-mask>
 									</div>
 									<div class="form-group">
 										<label>e a informação que os lisos querem saber. Quanto de grana que você quer repassar?</label> 
-										<input type="text" class="form-control" ng-model="interesse.valorDoRepasse">
+										<input type="text" class="form-control" ng-model="interesse.valorDoRepasse" ui-money-mask>
 									</div>
 									<br/>										
 									<div class="pull-right">
@@ -95,7 +95,7 @@
 								<div class="row">
 									<div class="form-group col-sm-6">
 										<label>Cuida, coloca o valor...</label> 
-										<input type="text" class="form-control" ng-model="interesse.valorTotal">
+										<input type="text" class="form-control" required ng-model="interesse.valorDoInteresse" ui-money-mask>
 									</div>
 								</div>
 								<div class="pull-right">
