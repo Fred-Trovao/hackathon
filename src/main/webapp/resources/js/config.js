@@ -20,7 +20,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
 	url : "/index",
 	templateUrl : "resources/views/common/content.html",
 	access : {
-	    loginRequired : false,
+	    loginRequired : true,
 	    authorizedRoles : [ USER_ROLES.all ]
 	}
     }).state('index.main', {
@@ -30,7 +30,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
 	    pageTitle : 'Example view'
 	},
 	access : {
-	    loginRequired : false,
+	    loginRequired : true,
 	    authorizedRoles : [ USER_ROLES.all ]
 	}
     }).state('index.minor', {
@@ -67,15 +67,6 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
 	data : {
 	    pageTitle : 'Example view'
 	},
-	resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load([
-                    {
-                        files: ['resources/css/plugins/iCheck/custom.css','resources/js/vendor/plugins/iCheck/icheck.min.js']
-                    }
-                ]);
-            }
-        },
 	access : {
 	    loginRequired : false,
 	    authorizedRoles : [ USER_ROLES.all ]
@@ -96,7 +87,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
             }
         },
 	access : {
-	    loginRequired : false,
+	    loginRequired : true,
 	    authorizedRoles : [ USER_ROLES.all ]
 	}
     }).state('index.listar-interesses', {
@@ -115,7 +106,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
                 }
             },
     	access : {
-    	    loginRequired : false,
+    	    loginRequired : true,
     	    authorizedRoles : [ USER_ROLES.all ]
     	}
         }).state("error", {
@@ -153,12 +144,12 @@ inspiniaApp.config(config).run(function($rootScope, $state, $location, $http, Au
 	}
     });
 
-    $rootScope.$on('$stateChangeSuccess', function(scope, next, current) {
-	$rootScope.$evalAsync(function() {
-	    //Verificar
-	    //$.material.init();
-	});
-    });
+//    $rootScope.$on('$stateChangeSuccess', function(scope, next, current) {
+//	$rootScope.$evalAsync(function() {
+//	    //Verificar
+//	    $.inspiniaApp.init();
+//	});
+//    });
 
     // Call when the the client is confirmed
     $rootScope.$on('event:auth-loginConfirmed', function(event, data) {
@@ -181,7 +172,7 @@ inspiniaApp.config(config).run(function($rootScope, $state, $location, $http, Au
     $rootScope.$on('event:auth-loginRequired', function(event, data) {
 	if ($rootScope.loadingAccount && data.status !== 401) {
 	    $rootScope.requestedUrl = $location.path()
-	    $location.path('/loading');
+	    $state.go('loading');
 	} else {
 		$rootScope.bodyClass = 'gray-bg';
 	    Session.invalidate();

@@ -12,6 +12,9 @@ function MainCtrl() {
     this.helloText = 'Welcome in SeedProject';
     this.descriptionText = 'It is an application skeleton for a typical AngularJS web app. You can use it to quickly bootstrap your angular webapp projects and dev environment for these projects.';
 
+    this.teste = function() {
+	console.log("clicou");
+    };
 };
 
 angular.module('inspinia').controller('MainCtrl', MainCtrl)
@@ -34,5 +37,10 @@ angular.module('inspinia').controller('MainCtrl', MainCtrl)
     default:
 	$scope.code = 500;
 	$scope.message = "Oops! Um erro inesperado aconteceu."
+    }
+}).controller('LogoutController', function (AuthSharedService, $scope) {
+    
+    $scope.logout = function() {
+	AuthSharedService.logout();	
     }
 });

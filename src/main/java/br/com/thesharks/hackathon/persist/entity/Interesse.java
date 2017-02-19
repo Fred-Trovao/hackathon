@@ -7,31 +7,37 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 @Entity
 @Table(name = "interesse")
 public class Interesse extends EntidadeAbstrata implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Column(name = "nome", nullable = false)
+	@Column(name = "nome")
 	private String nome;
 
 	@Column(name = "link")
 	private String link;
 
-	@Column(name = "valor_produto", nullable = false)
-	private Double valorProduto;
+	@Column(name = "tipo_interesse")
+	private String tipoInteresse;
 
-	@Column(name = "valor_parcela", nullable = false)
+	@Column(name = "valor_total", nullable = false)
+	private Double valorTotal;
+
+	@Column(name = "valor_parcela")
 	private Double valorParcela;
 
-	@Column(name = "numero_de_parcelas", nullable = false)
+	@Column(name = "numero_de_parcelas")
 	private Integer numeroDeParcelas;
 
-	@Column(name = "valor_a_vista", nullable = false)
+	@Column(name = "valor_a_vista")
 	private Double valorAVista;
 
-	@Column(name = "juros", nullable = false)
+	@Column(name = "juros")
 	private Double juros;
 
 	@ManyToOne
@@ -41,12 +47,12 @@ public class Interesse extends EntidadeAbstrata implements Serializable {
 		super();
 	}
 
-	public Interesse(String nome, String link, Double valorProduto, Double valorParcela, Integer numeroDeParcelas,
+	public Interesse(String nome, String link, Double valorTotal, Double valorParcela, Integer numeroDeParcelas,
 			Double valorAVista, Double juros, Usuario usuario) {
 		super();
 		this.nome = nome;
 		this.link = link;
-		this.valorProduto = valorProduto;
+		this.valorTotal = valorTotal;
 		this.valorParcela = valorParcela;
 		this.numeroDeParcelas = numeroDeParcelas;
 		this.valorAVista = valorAVista;
@@ -70,12 +76,12 @@ public class Interesse extends EntidadeAbstrata implements Serializable {
 		this.link = link;
 	}
 
-	public Double getValorProduto() {
-		return valorProduto;
+	public Double getValorTotal() {
+		return valorTotal;
 	}
 
-	public void setValorProduto(Double valorProduto) {
-		this.valorProduto = valorProduto;
+	public void setValorTotal(Double valorTotal) {
+		this.valorTotal = valorTotal;
 	}
 
 	public Double getValorParcela() {
@@ -116,6 +122,20 @@ public class Interesse extends EntidadeAbstrata implements Serializable {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public static void main(String[] args) throws JsonProcessingException {
+		ObjectMapper om = new ObjectMapper();
+
+		System.out.println(om.writeValueAsString(new Interesse()));
+	}
+
+	public String getTipoInteresse() {
+		return tipoInteresse;
+	}
+
+	public void setTipoInteresse(String tipoInteresse) {
+		this.tipoInteresse = tipoInteresse;
 	}
 
 }

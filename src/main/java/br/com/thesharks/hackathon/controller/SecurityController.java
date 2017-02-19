@@ -13,20 +13,21 @@ import br.com.thesharks.hackathon.persist.entity.Usuario;
 import br.com.thesharks.hackathon.persist.repository.TokenRepository;
 import br.com.thesharks.hackathon.persist.repository.UsuarioRepository;
 import br.com.thesharks.hackathon.security.SecurityUtils;
+import br.com.thesharks.hackathon.service.UsuarioService;
 
 @RestController
 @RequestMapping("/security")
 public class SecurityController {
 
 	@Autowired
-	private UsuarioRepository userRepo;
+	private UsuarioService usuarioService;
 
 	@Autowired
 	private TokenRepository tokenRepo;
 
 	@GetMapping(value = "/account")
 	public Usuario getUserAccount() {
-		Usuario user = userRepo.findByLogin(SecurityUtils.getCurrentLogin());
+		Usuario user = usuarioService.findByLogin(SecurityUtils.getCurrentLogin());
 		
 		return user;
 	}
