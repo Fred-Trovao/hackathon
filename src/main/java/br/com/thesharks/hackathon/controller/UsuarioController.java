@@ -37,7 +37,7 @@ public class UsuarioController {
 		return usuarioService.findById(usuarioId);
 	}
 
-	@PostMapping
+	@PostMapping(value = "/salvarUsuario")
 	public Usuario saveusuario(@RequestBody Usuario usuario) {
 		logger.debug("save usuario");
 		usuarioService.salvarOuAtualizar(usuario);
