@@ -46,7 +46,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
     }).state('login', {
 	url : "/login",
 	templateUrl : "resources/views/login.html",
-	data: { pageTitle: 'Login', specialClass: 'gray-bg' },
+	data: { pageTitle: 'Login' },
 	resolve: {
             loadPlugin: function ($ocLazyLoad) {
                 return $ocLazyLoad.load([
@@ -121,7 +121,6 @@ inspiniaApp.config(config).run(function($rootScope, $state, $location, $http, Au
 
     $rootScope.$on('$stateChangeStart', function(event, next) {
 
-    	$rootScope.authenticated = true;	
 	if (next.originalPath === "/login" && $rootScope.authenticated) {
 	    event.preventDefault();
 	} else if (next.access && next.access.loginRequired && !$rootScope.authenticated) {
