@@ -11,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import br.com.thesharks.hackathon.persist.entity.enums.TipoRepasseEnum;
+import br.com.thesharks.hackathon.persist.entity.enums.TipoInteresseEnum;
 
 @Entity
 @Table(name = "interesse")
@@ -24,12 +24,12 @@ public class Interesse extends EntidadeAbstrata implements Serializable {
 	private String link;
 
 	@Enumerated(EnumType.STRING)
-	private TipoRepasseEnum tipoInteresse;
+	private TipoInteresseEnum tipoInteresse;
 
 	@Column(nullable = false)
-	private Double valorDoInteresse;
+	private BigDecimal valorDoInteresse;
 
-	private Double valorDaParcela;
+	private BigDecimal valorDaParcela;
 
 	private BigDecimal valorDoRepasse;
 
@@ -61,28 +61,12 @@ public class Interesse extends EntidadeAbstrata implements Serializable {
 		this.link = link;
 	}
 
-	public TipoRepasseEnum getTipoInteresse() {
+	public TipoInteresseEnum getTipoInteresse() {
 		return tipoInteresse;
 	}
 
-	public void setTipoInteresse(TipoRepasseEnum tipoInteresse) {
+	public void setTipoInteresse(TipoInteresseEnum tipoInteresse) {
 		this.tipoInteresse = tipoInteresse;
-	}
-
-	public Double getValorDoInteresse() {
-		return valorDoInteresse;
-	}
-
-	public void setValorDoInteresse(Double valorDoInteresse) {
-		this.valorDoInteresse = valorDoInteresse;
-	}
-
-	public Double getValorDaParcela() {
-		return valorDaParcela;
-	}
-
-	public void setValorDaParcela(Double valorDaParcela) {
-		this.valorDaParcela = valorDaParcela;
 	}
 
 	public BigDecimal getValorDoRepasse() {
@@ -117,4 +101,20 @@ public class Interesse extends EntidadeAbstrata implements Serializable {
 		this.usuario = usuario;
 	}
 
+	public BigDecimal getValorDoInteresse() {
+		return valorDoInteresse;
+	}
+
+	public void setValorDoInteresse(BigDecimal valorDoInteresse) {
+		this.valorDoInteresse = valorDoInteresse;
+	}
+
+	public BigDecimal getValorDaParcela() {
+		return valorDaParcela;
+	}
+
+	public void setValorDaParcela(BigDecimal valorDaParcela) {
+		this.valorDaParcela = valorDaParcela;
+	}
+	
 }

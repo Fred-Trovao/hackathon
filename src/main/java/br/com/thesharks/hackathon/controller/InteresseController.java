@@ -3,6 +3,8 @@ package br.com.thesharks.hackathon.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,7 +35,13 @@ public class InteresseController {
 	}
 	
 	@GetMapping("/listar-interesses")
-	public List<Interesse> listar(){
-		return interesseService.listarInteresses();
+	public ResponseEntity<List<Interesse>> listar(){
+		List<Interesse> interesses = interesseService.listarInteressesParaUsuario(usuarioService.getUsuarioCurrent());
+		
+		if(interesses == null || interesses.isEmpty()){
+			return new ResponseEntity<List<Interesse>>(HttpStatus.NO_CONTENT);
+		}
+		
+		return new ResponseEntity<List<Interesse>>(interesses, HttpStatus.OK);
 	}
 }
