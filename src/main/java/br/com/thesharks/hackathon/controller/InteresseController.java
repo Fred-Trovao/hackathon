@@ -26,7 +26,6 @@ public class InteresseController {
 	public Interesse incluir(@RequestBody Interesse interesse) {
 		Usuario usuario = usuarioService.findByLogin(SecurityUtils.getCurrentLogin());
 		interesse.setUsuario(usuario);
-		interesseService.incluir(interesse);
-		return interesse;
+		return interesseService.incluir(interesse);
 	}
 }
