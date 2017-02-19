@@ -98,8 +98,28 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
 	    loginRequired : false,
 	    authorizedRoles : [ USER_ROLES.all ]
 	}
-    }).state("error", {
-	url: "/error/:code",
+<<<<<<< HEAD
+    }).state('index.listar-interesses', {
+    	url : "/listar-interesses",
+    	templateUrl : "resources/views/listar-interesses.html",
+    	data : {
+    	    pageTitle : 'Example view'
+    	},
+    	resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        {
+                            files: ['resources/css/plugins/iCheck/custom.css','resources/js/vendor/plugins/iCheck/icheck.min.js']
+                        }
+                    ]);
+                }
+            },
+    	access : {
+    	    loginRequired : false,
+    	    authorizedRoles : [ USER_ROLES.all ]
+    	}
+        }).state("error", {
+        url: "/error/:code",
         templateUrl: "resources/views/common/error.html",
         controller: "ErrorController",
         access: {
