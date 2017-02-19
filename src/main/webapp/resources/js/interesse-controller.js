@@ -3,7 +3,7 @@ angular.module('inspinia').controller('InteresseController', function($state, $r
     $scope.interesse.tipoDoInteresse = '';
     
 	$scope.salvarInformacoes = function(){
-		if($scope.interesse.valorDoInteresse > 0){
+		if($scope.interesse.valorDoInteresse > 0 ){
 		$http.post("/interesses/salvarInteresse",$scope.interesse).success(function(response) {
 	        console.log("Interesse cadastrado com sucesso!");
 	        swal("Aeee", "Tudo Certo!", "success");
