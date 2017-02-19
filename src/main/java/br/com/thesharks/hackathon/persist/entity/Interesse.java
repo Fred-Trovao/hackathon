@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 @Entity
 @Table(name = "interesse")
 public class Interesse extends EntidadeAbstrata implements Serializable {
@@ -116,6 +119,12 @@ public class Interesse extends EntidadeAbstrata implements Serializable {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+	
+	public static void main(String[] args) throws JsonProcessingException {
+		ObjectMapper om = new ObjectMapper();
+		
+		System.out.println(om.writeValueAsString(new Interesse()));
 	}
 
 }

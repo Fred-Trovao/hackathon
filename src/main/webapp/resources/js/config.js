@@ -66,15 +66,6 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
 	data : {
 	    pageTitle : 'Example view'
 	},
-	resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load([
-                    {
-                        files: ['resources/css/plugins/iCheck/custom.css','resources/js/vendor/plugins/iCheck/icheck.min.js']
-                    }
-                ]);
-            }
-        },
 	access : {
 	    loginRequired : false,
 	    authorizedRoles : [ USER_ROLES.all ]
@@ -95,7 +86,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
             }
         },
 	access : {
-	    loginRequired : false,
+	    loginRequired : true,
 	    authorizedRoles : [ USER_ROLES.all ]
 	}
     }).state('index.listar-interesses', {
@@ -151,12 +142,12 @@ inspiniaApp.config(config).run(function($rootScope, $state, $location, $http, Au
 	}
     });
 
-    $rootScope.$on('$stateChangeSuccess', function(scope, next, current) {
-	$rootScope.$evalAsync(function() {
-	    //Verificar
-	    //$.material.init();
-	});
-    });
+//    $rootScope.$on('$stateChangeSuccess', function(scope, next, current) {
+//	$rootScope.$evalAsync(function() {
+//	    //Verificar
+//	    $.inspiniaApp.init();
+//	});
+//    });
 
     // Call when the the client is confirmed
     $rootScope.$on('event:auth-loginConfirmed', function(event, data) {
