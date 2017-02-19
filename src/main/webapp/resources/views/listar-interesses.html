@@ -14,17 +14,17 @@
 					<div>
 		                <div class="feed-activity-list">
 		
-		                    <div class="feed-element">
+		                    <div ng-repeat="interesse in listaInteressados" class="feed-element">
 		                        <a ui-sref="profile" class="pull-left">
 		                            <img alt="image" class="img-circle" src="resources/img/a5.jpg">
 		                        </a>
 		
 		                        <div class="media-body ">
 		                            <small class="pull-right">5m atrás</small>
-		                            <strong>Monica Smith</strong><br>
+		                            <strong>{{interesse.usuario.nome}}</strong><br>
 		                            <small class="text-muted">a moça tem um crédito no cartão de...</small>
 									<div class="col-sm-10">
-										<p class="h3"><span class="fa fa-credit-card"></span>&nbsp;&nbsp; R$ 1.500,00</p>
+										<p class="h3"><span class="fa fa-credit-card"></span>&nbsp;&nbsp; R$ {{interesse.valorDoInteresse}}</p>
 									</div>
 									<div class="col-sm-2">
 										<button class="btn btn-primary pull-right">Contato</button>
