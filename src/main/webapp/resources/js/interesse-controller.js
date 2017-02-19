@@ -9,7 +9,7 @@ angular.module('inspinia').controller('InteresseController', function($state, $r
 	        $scope.interesse.tipoInteresse = '';
 	        $state.go('index.listar-interesses')
 	    }).error(function(response) {
-	    	console.log("Error");
+	    	swal("Oops...", "Algo deu muito errado :(", "error");
 	    });
     	
     }
