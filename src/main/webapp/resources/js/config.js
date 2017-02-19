@@ -20,7 +20,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
 	url : "/index",
 	templateUrl : "resources/views/common/content.html",
 	access : {
-	    loginRequired : true,
+	    loginRequired : false,
 	    authorizedRoles : [ USER_ROLES.all ]
 	}
     }).state('index.main', {
@@ -30,8 +30,8 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
 	    pageTitle : 'Example view'
 	},
 	access : {
-	    loginRequired : true,
-	    authorizedRoles : [ USER_ROLES.admin ]
+	    loginRequired : false,
+	    authorizedRoles : [ USER_ROLES.all ]
 	}
     }).state('index.minor', {
 	url : "/minor",
@@ -46,9 +46,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
     }).state('login', {
 	url : "/login",
 	templateUrl : "resources/views/login.html",
-	data : {
-	    pageTitle : 'Example view'
-	},
+	data: { pageTitle: 'Login', specialClass: 'gray-bg' },
 	resolve: {
             loadPlugin: function ($ocLazyLoad) {
                 return $ocLazyLoad.load([
@@ -100,7 +98,15 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
 	    loginRequired : false,
 	    authorizedRoles : [ USER_ROLES.all ]
 	}
-    })
+    }).state("error", {
+	url: "/error/:code",
+        templateUrl: "resources/views/common/error.html",
+        controller: "ErrorController",
+        access: {
+            loginRequired: false,
+            authorizedRoles: [USER_ROLES.all]
+        }
+    });
 };
 
 inspiniaApp.constant('USER_ROLES', {
