@@ -17,17 +17,17 @@
 								<p>No que você está interessado?</p>
 								<div class="form-group">
 									<label> 
-										<input icheck type="radio" name="radioInteresse" ng-model="interesse.tipoInteresse" value="repasse"> Tenho grana mas quero ajudar o próximo
+										<input icheck type="radio" name="radioInteresse" ng-model="interesse.tipoInteresse" value="REPASSE"> Tenho grana mas quero ajudar o próximo
 									</label>
 								</div>
 								<div class="form-group">
 									<label> 
-										<input icheck type="radio" name="radioInteresse" ng-model="interesse.tipoInteresse" value="receber"> Tenho o cartão pra parcelar e quero grana à vista 
+										<input icheck type="radio" name="radioInteresse" ng-model="interesse.tipoInteresse" value="RECEBER"> Tenho o cartão pra parcelar e quero grana à vista 
 									</label>
 								</div>
 								
 							</div>
-							<div class="col-sm-8" ng-if="interesse.tipoInteresse == 'repasse'">
+							<div class="col-sm-8" ng-if="interesse.tipoInteresse == 'REPASSE'">
 								<h3 class="m-t-none m-b"></h3>
 	
 								<p>Show de bola! Detalhe bem direitinho o que você se interessa</p>
@@ -43,7 +43,7 @@
 									<div class="row">
 										<div class="form-group col-sm-6">
 											<label>Agora o principal! Diz aí o valor cheio</label> 
-											<input type="text" class="form-control" ng-model="interesse.valorTotal">
+											<input type="text" class="form-control" ng-model="interesse.valorDoInteresse" ui-money-mask>
 										</div>
 									</div>
 									<br/>
@@ -51,7 +51,7 @@
 									<div class="row">
 										<div class="form-group col-sm-6">
 											<label>Qual o valor de uma parcela</label> 
-											<input type="text" class="form-control" ng-model="interesse.valorParcela">
+											<input type="text" class="form-control" ng-model="interesse.valorParcela" ui-money-mask>
 										</div>
 										<div class="form-group col-sm-6">
 											<label>e qual a quantidade de vezes?</label> 
@@ -74,11 +74,11 @@
 									</div>
 									<div class="form-group">
 										<label>Se o valor tem desconto à vista, coloca aí</label> 
-										<input type="text" class="form-control" ng-model="interesse.valorAVista">
+										<input type="text" class="form-control" ng-model="interesse.valorAVista" ui-money-mask>
 									</div>
 									<div class="form-group">
 										<label>e a informação que os lisos querem saber. Quanto de grana que você quer repassar?</label> 
-										<input type="text" class="form-control" ng-model="interesse.valorDoRepasse">
+										<input type="text" class="form-control" ng-model="interesse.valorDoRepasse" ui-money-mask>
 									</div>
 									<br/>										
 									<div class="pull-right">
@@ -88,14 +88,14 @@
 										</button>
 									</div>
 							</div>
-							<div class="col-sm-8" ng-if="interesse.tipoInteresse == 'receber'">
+							<div class="col-sm-8" ng-if="interesse.tipoInteresse == 'RECEBER'">
 								<h3 class="m-t-none m-b"></h3>
 	
 								<p>Sabemos como é isso, cara. Mas não tem estresse, coloca um valor aí embaixo que você ta precisando que vamos te ajudar.</p>
 								<div class="row">
 									<div class="form-group col-sm-6">
 										<label>Cuida, coloca o valor...</label> 
-										<input type="text" class="form-control" ng-model="interesse.valorTotal">
+										<input type="text" class="form-control" required ng-model="interesse.valorDoInteresse" ui-money-mask>
 									</div>
 								</div>
 								<div class="pull-right">

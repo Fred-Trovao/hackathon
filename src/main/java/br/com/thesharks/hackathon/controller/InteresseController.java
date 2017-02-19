@@ -1,6 +1,11 @@
 package br.com.thesharks.hackathon.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,5 +32,16 @@ public class InteresseController {
 		Usuario usuario = usuarioService.findByLogin(SecurityUtils.getCurrentLogin());
 		interesse.setUsuario(usuario);
 		return interesseService.incluir(interesse);
+	}
+	
+	@GetMapping("/listar-interesses")
+	public ResponseEntity<List<Interesse>> listar(){
+		List<Interesse> interesses = interesseService.listarInteressesParaUsuario(usuarioService.getUsuarioCurrent());
+		
+		if(interesses == null || interesses.isEmpty()){
+			return new ResponseEntity<List<Interesse>>(HttpStatus.NO_CONTENT);
+		}
+		
+		return new ResponseEntity<List<Interesse>>(interesses, HttpStatus.OK);
 	}
 }

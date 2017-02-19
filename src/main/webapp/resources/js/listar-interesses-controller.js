@@ -4,10 +4,12 @@ angular.module('inspinia').controller('ListarInteressesController', function($ro
 		
 		$http({
 			method: 'GET',
-			url: '/listar-interesses'
+			url: 'interesses/listar-interesses'
 				
 		}).then(function sucesso(response){
-			
+			console.log(response);
+		}, function erro(response){
+			swal("Oops...", "Algo deu muito errado :(", "error");
 		});
 	}
 	
