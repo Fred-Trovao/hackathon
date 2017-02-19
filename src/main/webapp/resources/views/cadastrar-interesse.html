@@ -1,6 +1,6 @@
 <div class="wrapper wrapper-content animated fadeInRight" ng-controller="InteresseController">
 	<div class="row">
-		<form novalidate>
+		<form name="formInteresse" novalidate>
 		<div class="col-lg-12">
 			<div class="ibox float-e-margins">
 				<div class="ibox-title">
@@ -91,12 +91,13 @@
 								<div class="row">
 									<div class="form-group col-sm-6">
 										<label>Cuida, coloca o valor...</label> 
-										<input type="text" class="form-control" required ng-model="interesse.valorDoInteresse" ui-money-mask>
+										<input type="text" name="valorDoInteresse" class="form-control" ng-model="interesse.valorDoInteresse" ui-money-mask>
+                            </div>
 									</div>
 								</div>
 								<div class="pull-right">
 									<p>Salva aí e fica tranquilo que agora é com a gente..</p> 
-									<button class="btn btn-sm btn-primary pull-right m-t-n-xs" ng-click="salvarInformacoes()" >
+									<button type="submit" class="btn btn-sm btn-primary pull-right m-t-n-xs" ng-click="salvarInformacoes()" >
 										<strong>Salvar</strong>
 									</button>
 								</div>

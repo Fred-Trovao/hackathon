@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.thesharks.hackathon.persist.entity.Usuario;
-import br.com.thesharks.hackathon.persist.repository.UsuarioRepository;
 import br.com.thesharks.hackathon.service.UsuarioService;
 
 @RestController

@@ -31,7 +31,7 @@ inspiniaApp.service('AuthSharedService', function ($rootScope, $http, authServic
                 ignoreAuthModule: 'ignoreAuthModule',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             };
-            $http.post('authenticate', $.param({
+            return $http.post('authenticate', $.param({
                 username: userName,
                 password: password,
                 rememberme: rememberMe

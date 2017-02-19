@@ -61,6 +61,25 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
 	    loginRequired : false,
 	    authorizedRoles : [ USER_ROLES.all ]
 	}
+    }).state('cadastrar-usuario', {
+    	url : "/cadastrar-usuario",
+    	templateUrl : "resources/views/cadastrar-usuario.html",
+    	data : {
+    	    pageTitle : 'Cadastro Usuario'
+    	},
+    	resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        {
+                            files: ['resources/css/plugins/iCheck/custom.css','resources/js/vendor/plugins/iCheck/icheck.min.js']
+                        }
+                    ]);
+                }
+            },
+    	access : {
+    	    loginRequired : false,
+    	    authorizedRoles : [ USER_ROLES.all ]
+    	}
     }).state('index.cadastrar-interesse', {
 	url : "/cadastrar-interesse",
 	templateUrl : "resources/views/cadastrar-interesse.html",
