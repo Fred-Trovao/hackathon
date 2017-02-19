@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.thesharks.hackathon.persist.entity.Token;
@@ -14,6 +15,7 @@ import br.com.thesharks.hackathon.persist.repository.UsuarioRepository;
 import br.com.thesharks.hackathon.security.SecurityUtils;
 
 @RestController
+@RequestMapping("/security")
 public class SecurityController {
 
 	@Autowired
@@ -22,7 +24,7 @@ public class SecurityController {
 	@Autowired
 	private TokenRepository tokenRepo;
 
-	@GetMapping(value = "/security/account")
+	@GetMapping(value = "/account")
 	public Usuario getUserAccount() {
 		Usuario user = userRepo.findByLogin(SecurityUtils.getCurrentLogin());
 		user.setSenha(null);
@@ -30,7 +32,7 @@ public class SecurityController {
 	}
 
 	@PreAuthorize("hasAuthority('admin')")
-	@GetMapping(value = "/security/tokens")
+	@GetMapping(value = "/tokens")
 	public List<Token> getTokens() {
 		List<Token> tokens = tokenRepo.findAll();
 		for (Token t : tokens) {

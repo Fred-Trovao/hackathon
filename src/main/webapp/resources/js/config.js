@@ -98,6 +98,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
 	    loginRequired : false,
 	    authorizedRoles : [ USER_ROLES.all ]
 	}
+<<<<<<< HEAD
     }).state('index.listar-interesses', {
     	url : "/listar-interesses",
     	templateUrl : "resources/views/listar-interesses.html",
@@ -118,7 +119,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
     	    authorizedRoles : [ USER_ROLES.all ]
     	}
         }).state("error", {
-	url: "/error/:code",
+        url: "/error/:code",
         templateUrl: "resources/views/common/error.html",
         controller: "ErrorController",
         access: {

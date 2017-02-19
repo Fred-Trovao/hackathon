@@ -8,13 +8,17 @@ public class Response {
 
     private Error error;
 
+    public Response(int code, String message) {
+    	this.code = code;
+    	this.message = message;
+    }
+
     public Response(int code, String message, Error error) {
-        this.code = code;
-        this.message = message;
+    	this(code, message);
         this.error = error;
     }
 
-    public int getCode() {
+	public int getCode() {
         return code;
     }
 

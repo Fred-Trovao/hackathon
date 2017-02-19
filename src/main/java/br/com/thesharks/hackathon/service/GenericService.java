@@ -1,12 +1,14 @@
 package br.com.thesharks.hackathon.service;
 
 import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.thesharks.hackathon.exception.EntidadeNaoEncontradaException;
 import br.com.thesharks.hackathon.persist.entity.EntidadeAbstrata;
 import br.com.thesharks.hackathon.persist.repository.EntidadeRepository;
 
@@ -21,7 +23,7 @@ public abstract class GenericService<T extends EntidadeAbstrata> {
 	}
 
 	@Transactional
-	public T salvarOuAtualizar(T entidade) throws Exception {
+	public T salvarOuAtualizar(T entidade) throws EntidadeNaoEncontradaException {
 		if (entidade.getId() == null) {
 			return incluir(entidade);
 		}
@@ -35,12 +37,16 @@ public abstract class GenericService<T extends EntidadeAbstrata> {
 	}
 
 	@Transactional
-	public T alterar(T entidade) throws Exception {
+	public T alterar(T entidade) throws EntidadeNaoEncontradaException {
 		T saveAndFlush = null;
 		if (isCadastrada(entidade)) {
 			saveAndFlush = getRepository().saveAndFlush(entidade);
 		} else {
-			throw new Exception();
+			ParameterizedType genericSuperclass = (ParameterizedType) getClass().getGenericSuperclass();
+			
+			@SuppressWarnings("unchecked")
+			Class<T> entidadeClass = (Class<T>) genericSuperclass.getActualTypeArguments()[0];
+			throw new EntidadeNaoEncontradaException(String.format("%s não encontrada.", entidadeClass.getName()));
 		}
 
 		return saveAndFlush;
