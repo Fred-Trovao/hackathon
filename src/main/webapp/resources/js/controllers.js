@@ -18,8 +18,26 @@ function MainCtrl() {
 };
 
 angular.module('inspinia').controller('MainCtrl', MainCtrl)
-.controller('LoginController', function($rootScope, $scope, AuthSharedService) {
+.controller('LoginController', function($rootScope, $scope, AuthSharedService, $state) {
     $scope.rememberMe = true;
+    $scope.usuario
+    
+    $scope.cadastrarUsuario = function(){
+    	console.log("ae");
+    	$state.go('cadastrar-usuario');
+    }
+    
+    $scope.efetuarCadastro = function(){
+    	if($scope.usuario != null){
+    		$http.post("/usuarios/salvarUsuario",$scope.usuario).success(function(response) {
+    	        console.log("Usuario cadastrado com sucesso!");
+    	        swal("Aeee", "Usuario cadastrado com sucesso!", "success");
+    	    }).error(function(response) {
+    	    	swal("Oops...", "Algo deu muito errado :(", "error");
+    	    });
+    		}
+    }
+    
     $scope.login = function() {
 
 	if ($scope.form.$valid) {
