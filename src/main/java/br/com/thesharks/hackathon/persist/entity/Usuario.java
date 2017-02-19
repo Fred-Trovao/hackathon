@@ -7,14 +7,16 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "usuario")
@@ -22,7 +24,8 @@ public class Usuario extends EntidadeAbstrata implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Embedded
+	@OneToOne
+	@JoinColumn(nullable = false)
 	private Endereco endereco;
 
 	@OneToMany(mappedBy = "usuario", targetEntity = Interesse.class)
@@ -113,6 +116,7 @@ public class Usuario extends EntidadeAbstrata implements Serializable {
 		this.login = login;
 	}
 
+	@JsonIgnore
 	public String getSenha() {
 		return senha;
 	}

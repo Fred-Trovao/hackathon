@@ -20,7 +20,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
 	url : "/index",
 	templateUrl : "resources/views/common/content.html",
 	access : {
-	    loginRequired : false,
+	    loginRequired : true,
 	    authorizedRoles : [ USER_ROLES.all ]
 	}
     }).state('index.main', {
@@ -30,7 +30,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
 	    pageTitle : 'Example view'
 	},
 	access : {
-	    loginRequired : false,
+	    loginRequired : true,
 	    authorizedRoles : [ USER_ROLES.all ]
 	}
     }).state('index.minor', {

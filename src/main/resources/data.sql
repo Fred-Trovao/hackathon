@@ -1,3 +1,10 @@
+insert into authority (name) values ('admin');
+insert into authority (name) values ('user');
+
+INSERT INTO usuario(ativado, cpf, email, cidade, estado, login, nome, senha, 
+            telefone)
+    VALUES (true, '00875976409', 'fredmfarias@gmail.com', 'João Pessoa', ?, ?, ?, ?, 
+            ?);
 insert into users (first_name, family_name, login, password, e_mail, phone, language, enabled) values ('Steve', 'JOBS', 'steve', 'steve', 'steve.jobs@apple.com', '0033 1 23 45 67 89', 'en', true);
 insert into users (first_name, family_name, login, password, e_mail, phone, language, enabled) values ('Bill', 'GATES', 'bill', 'bill', 'bill.gates@microsoft.com', '0033 1 23 45 67 89', 'fr', true);
 insert into users (first_name, family_name, login, password, e_mail, phone, language, enabled) values ('Mark', 'ZUCKERBERG', 'mark', 'zuckerberg', 'mark.zuckerberg@facebook.com', '0033 1 23 45 67 89', 'en', true);
@@ -10,10 +17,6 @@ insert into users (first_name, family_name, login, password, e_mail, phone, lang
 insert into users (first_name, family_name, login, password, e_mail, phone, language, enabled) values ('Steve', 'BALLMER', 'steve2', 'ballmer', 'steve.ballmer@microsoft.com', '0033 1 23 45 67 89', 'en', true);
 insert into users (first_name, family_name, login, password, e_mail, phone, language, enabled) values ('Jack', 'DORSEY', 'jack', 'dorsey', 'jack.dorsey@twitter.com', '0033 1 23 45 67 89', 'en', true);
 insert into users (first_name, family_name, login, password, e_mail, phone, language, enabled) values ('Matt', 'MULLENWEG', 'matt', 'mullenweg', 'matt.mullenweg@wordpress.com', '0033 1 23 45 67 89', 'en', true);
-
-insert into authority (name) values ('admin');
-insert into authority (name) values ('technical user');
-insert into authority (name) values ('user');
 
 insert into users_authority (id_user, id_authority) values (1, 1);
 insert into users_authority (id_user, id_authority) values (1, 2);
