@@ -12,15 +12,15 @@ public class UsuarioService extends GenericService<Usuario> {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
-	
+
 	public Usuario findByLogin(String currentLogin) {
 		return usuarioRepository.findByLogin(currentLogin);
 	}
 
 	public Usuario getUsuarioCurrent() {
-		
+
 		Usuario usuario = usuarioRepository.findByLogin(SecurityUtils.getCurrentLogin());
-				
+
 		return usuario;
 	}
 
