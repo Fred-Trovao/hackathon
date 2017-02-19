@@ -13,36 +13,36 @@
 					<div class="row">
 							<div class="col-sm-4 b-r">
 								<h3 class="m-t-none m-b">Vamos lá, amigo.</h3>
-	
+
 								<p>No que você está interessado?</p>
 								<div class="form-group">
-									<label> 
+									<label>
 										<input icheck type="radio" name="radioInteresse" ng-model="interesse.tipoInteresse" value="REPASSE"> Em pegar minha grana e repassar ajudar o próximo
 									</label>
 								</div>
 								<div class="form-group">
-									<label> 
-										<input icheck type="radio" name="radioInteresse" ng-model="interesse.tipoInteresse" value="RECEBER"> Receber o dinheiro vivo e dividir no cartão a compra do meu novo amigo 
+									<label>
+										<input icheck type="radio" name="radioInteresse" ng-model="interesse.tipoInteresse" value="RECEBER"> Receber o dinheiro vivo e dividir no cartão a compra do meu novo amigo
 									</label>
 								</div>
-								
+
 							</div>
 							<div class="col-sm-8" ng-if="interesse.tipoInteresse == 'REPASSE'">
 								<h3 class="m-t-none m-b"></h3>
-	
+
 								<p>Show de bola! Detalhe bem direitinho o que você se interessa</p>
-	
+
 									<div class="form-group">
-										<label>Informe a descrição</label> 
+										<label>Informe a descrição</label>
 										<input type="text" class="form-control" ng-model="interesse.nome">
 									</div>
 									<div class="form-group">
-										<label>E qual o Link do item? Se tiver, informe também...</label> 
+										<label>E qual o Link do item? Se tiver, informe também...</label>
 										<input type="text" class="form-control" ng-model="interesse.link">
 									</div>
 									<div class="row">
 										<div class="form-group col-sm-6">
-											<label>Agora o principal! Diz aí o valor cheio</label> 
+											<label>Agora o principal! Diz aí o valor cheio</label>
 											<input type="text" class="form-control" ng-model="interesse.valorDoInteresse" ui-money-mask>
 										</div>
 									</div>
@@ -50,12 +50,12 @@
 										<p ng-if="!interesse.link">e com relação as parcelas...</p>
 									<div class="row"  ng-if="!interesse.link">
 										<div class="form-group col-sm-6">
-											<label>Qual o valor de uma parcela</label> 
-											<input type="text" class="form-control" ng-model="interesse.valorParcela" ui-money-mask>
+											<label>Qual o valor de uma parcela</label>
+											<input type="text" class="form-control" ng-model="interesse.valorDaParcela" ui-money-mask>
 										</div>
 										<div class="form-group col-sm-6">
-											<label>e qual a quantidade de vezes?</label> 
-											<select class="form-control m-b col-sm-2" ng-model="interesse.numeroDeParcelas">
+											<label>e qual a quantidade de vezes?</label>
+											<select class="form-control m-b col-sm-2" ng-model="interesse.quantidadeDeParcelas">
 				                                <option value="1">1x</option>
 				                                <option value="2">2x</option>
 				                                <option value="3">3x</option>
@@ -70,15 +70,15 @@
 				                                <option value="12">12x</option>
 				                            </select>
 										</div>
-										
+
 									</div>
 									<div class="form-group">
-										<label>e a informação que os lisos querem saber. Quanto de grana que você quer repassar?</label> 
+										<label>e a informação que os lisos querem saber. Quanto de grana que você quer repassar?</label>
 										<input type="text" class="form-control" ng-model="interesse.valorDoRepasse" ui-money-mask>
 									</div>
-									<br/>										
+									<br/>
 									<div class="pull-right">
-										<p>Salva aí e fica tranquilo que agora é com a gente..</p> 
+										<p>Salva aí e fica tranquilo que agora é com a gente..</p>
 										<button class="btn btn-sm btn-primary pull-right m-t-n-xs" ng-click="salvarInformacoes()" >
 											<strong>Salvar</strong>
 										</button>
@@ -86,17 +86,17 @@
 							</div>
 							<div class="col-sm-8" ng-if="interesse.tipoInteresse == 'RECEBER'">
 								<h3 class="m-t-none m-b"></h3>
-	
+
 								<p>Sabemos como é isso, cara. Mas não tem estresse, coloca um valor aí embaixo que você ta precisando que vamos te ajudar.</p>
 								<div class="row">
 									<div class="form-group col-sm-6">
-										<label>Cuida, coloca o valor...</label> 
+										<label>Cuida, coloca o valor...</label>
 										<input type="text" name="valorDoInteresse" class="form-control" ng-model="interesse.valorDoInteresse" ui-money-mask>
-                            </div>
+
 									</div>
 								</div>
 								<div class="pull-right">
-									<p>Salva aí e fica tranquilo que agora é com a gente..</p> 
+									<p>Salva aí e fica tranquilo que agora é com a gente..</p>
 									<button type="submit" class="btn btn-sm btn-primary pull-right m-t-n-xs" ng-click="salvarInformacoes()" >
 										<strong>Salvar</strong>
 									</button>
