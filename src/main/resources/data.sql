@@ -1,26 +1,23 @@
 insert into authority (name) values ('admin');
 insert into authority (name) values ('user');
 
-INSERT INTO usuario(ativado, cpf, email, cidade, estado, login, nome, senha, 
+INSERT INTO endereco(cidade, estado) VALUES ('João Pessoa', 'PB');
+INSERT INTO endereco(cidade, estado) VALUES ('Campina Grande', 'PB');
+INSERT INTO endereco(cidade, estado) VALUES ('Patos', 'PB');
+
+INSERT INTO usuario(ativado, cpf, endereco_id, login, nome, senha, 
             telefone)
-    VALUES (true, '00875976409', 'fredmfarias@gmail.com', 'João Pessoa', ?, ?, ?, ?, 
-            ?);
-insert into users (first_name, family_name, login, password, e_mail, phone, language, enabled) values ('Steve', 'JOBS', 'steve', 'steve', 'steve.jobs@apple.com', '0033 1 23 45 67 89', 'en', true);
-insert into users (first_name, family_name, login, password, e_mail, phone, language, enabled) values ('Bill', 'GATES', 'bill', 'bill', 'bill.gates@microsoft.com', '0033 1 23 45 67 89', 'fr', true);
-insert into users (first_name, family_name, login, password, e_mail, phone, language, enabled) values ('Mark', 'ZUCKERBERG', 'mark', 'zuckerberg', 'mark.zuckerberg@facebook.com', '0033 1 23 45 67 89', 'en', true);
-insert into users (first_name, family_name, login, password, e_mail, phone, language, enabled) values ('Tim', 'COOK', 'tim', 'cook', 'tim.cook@apple.com', '0033 1 23 45 67 89', 'en', true);
-insert into users (first_name, family_name, login, password, e_mail, phone, language, enabled) values ('Larry', 'Page', 'larry', 'page', 'larry.page@gmail.com', '0033 1 23 45 67 89', 'en', true);
-insert into users (first_name, family_name, login, password, e_mail, phone, language, enabled) values ('Sergey', 'Brin', 'sergey', 'brin', 'sergey.brin@gmail.com', '0033 1 23 45 67 89', 'en', true);
-insert into users (first_name, family_name, login, password, e_mail, phone, language, enabled) values ('Larry', 'ELLISON', 'larry2', 'ellison', 'larry.ellison@oracle.com', '0033 1 23 45 67 89', 'en', true);
-insert into users (first_name, family_name, login, password, e_mail, phone, language, enabled) values ('Jeff', 'BEZOS', 'jeff', 'bezos', 'jeff.bezos@amazon.com', '0033 1 23 45 67 89', 'en', true);
-insert into users (first_name, family_name, login, password, e_mail, phone, language, enabled) values ('Paul', 'ALLEN', 'paul', 'allen', 'paul.allen@microsoft.com', '0033 1 23 45 67 89', 'en', true);
-insert into users (first_name, family_name, login, password, e_mail, phone, language, enabled) values ('Steve', 'BALLMER', 'steve2', 'ballmer', 'steve.ballmer@microsoft.com', '0033 1 23 45 67 89', 'en', true);
-insert into users (first_name, family_name, login, password, e_mail, phone, language, enabled) values ('Jack', 'DORSEY', 'jack', 'dorsey', 'jack.dorsey@twitter.com', '0033 1 23 45 67 89', 'en', true);
-insert into users (first_name, family_name, login, password, e_mail, phone, language, enabled) values ('Matt', 'MULLENWEG', 'matt', 'mullenweg', 'matt.mullenweg@wordpress.com', '0033 1 23 45 67 89', 'en', true);
+    VALUES (true, '00875976409', 2, 'fredmfarias@gmail.com', 'Fred Farias', 'fred', '83988269825');
+
+    INSERT INTO usuario(ativado, cpf, endereco_id, login, nome, senha, 
+            telefone)
+  	VALUES (true, '70233186409', 1, 'jcmacedo@gmail.com', 'José Carlos', 'jose', '83996568756');
+
+INSERT INTO usuario(ativado, cpf, endereco_id, login, nome, senha, 
+            telefone)
+    VALUES (true, '17478460232', 3, 'lucasfigueiredo@gmail.com', 'Lucas Figuereido', 'lucas', '83991342526');
 
 insert into users_authority (id_user, id_authority) values (1, 1);
-insert into users_authority (id_user, id_authority) values (1, 2);
-insert into users_authority (id_user, id_authority) values (1, 3);
-insert into users_authority (id_user, id_authority) values (2, 3);
-insert into users_authority (id_user, id_authority) values (3, 3);
+insert into users_authority (id_user, id_authority) values (2, 1);
+insert into users_authority (id_user, id_authority) values (3, 1);
 	

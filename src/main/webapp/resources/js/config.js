@@ -98,7 +98,6 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
 	    loginRequired : false,
 	    authorizedRoles : [ USER_ROLES.all ]
 	}
-<<<<<<< HEAD
     }).state('index.listar-interesses', {
     	url : "/listar-interesses",
     	templateUrl : "resources/views/listar-interesses.html",
@@ -163,7 +162,7 @@ inspiniaApp.config(config).run(function($rootScope, $state, $location, $http, Au
     $rootScope.$on('event:auth-loginConfirmed', function(event, data) {
 	console.log('login confirmed start ' + data);
 	$rootScope.loadingAccount = false;
-	var nextLocation = ($rootScope.requestedUrl ? $rootScope.requestedUrl : "/home");
+	var nextLocation = ($rootScope.requestedUrl ? $rootScope.requestedUrl : "/index");
 	var delay = ($location.path() === "/loading" ? 1500 : 0);
 
 	$timeout(function() {
