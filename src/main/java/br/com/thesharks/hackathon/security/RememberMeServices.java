@@ -26,9 +26,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.thesharks.hackathon.persist.entity.Token;
-import br.com.thesharks.hackathon.persist.entity.User;
+import br.com.thesharks.hackathon.persist.entity.Usuario;
 import br.com.thesharks.hackathon.persist.repository.TokenRepository;
-import br.com.thesharks.hackathon.persist.repository.UserRepository;
+import br.com.thesharks.hackathon.persist.repository.UsuarioRepository;
 
 /**
  * Custom implementation of Spring Security's RememberMeServices.
@@ -69,7 +69,7 @@ public class RememberMeServices extends AbstractRememberMeServices {
     private TokenRepository tokenRepo;
 
     @Autowired
-    private UserRepository userRepo;
+    private UsuarioRepository userRepo;
 
     @Autowired
     public RememberMeServices(Environment env,
@@ -110,7 +110,7 @@ public class RememberMeServices extends AbstractRememberMeServices {
 	String login = successfulAuthentication.getName();
 
 	log.debug("Creating new persistent login for user {}", login);
-	User user = userRepo.findByLogin(login);
+	Usuario user = userRepo.findByLogin(login);
 	Token token = new Token();
 	token.setSeries(generateSeriesData());
 	token.setUserLogin(user.getLogin());

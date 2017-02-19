@@ -115,7 +115,10 @@ inspiniaApp.config(config).run(function($rootScope, $state, $location, $http, Au
 
     $rootScope.$on('$stateChangeStart', function(event, next) {
 	
+<<<<<<< HEAD
     	$rootScope.authenticated = true;	
+=======
+>>>>>>> 0c4e31dc313bf464c53639e0b2b0cf7527b42f05
 	if (next.originalPath === "/login" && $rootScope.authenticated) {
 	    event.preventDefault();
 	} else if (next.access && next.access.loginRequired && !$rootScope.authenticated) {

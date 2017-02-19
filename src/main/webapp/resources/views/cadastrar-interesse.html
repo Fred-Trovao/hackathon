@@ -1,6 +1,7 @@
 <div class="wrapper wrapper-content animated fadeInRight" ng-controller="InteresseController">
 	<div class="row">
-		<div class="col-lg-7">
+		<form novalidate>
+		<div class="col-lg-12">
 			<div class="ibox float-e-margins">
 				<div class="ibox-title">
 					<h5>
@@ -11,55 +12,103 @@
 				<div class="ibox-content">
 					<div class="row">
 							<div class="col-sm-4 b-r">
-								<h3 class="m-t-none m-b">Vamos lá, Amigo. No que você está interessado?</h3>
+								<h3 class="m-t-none m-b">Vamos lá, amigo.</h3>
 	
-								<p>Sign in today for more expirience.</p>
+								<p>No que você está interessado?</p>
+								<div class="form-group">
+									<label> 
+										<input icheck type="radio" name="radioInteresse" ng-model="interesse.tipoDoInteresse" value="1"> Tenho grana mas quero ajudar o próximo
+									</label>
+								</div>
+								<div class="form-group">
+									<label> 
+										<input icheck type="radio" name="radioInteresse" ng-model="interesse.tipoDoInteresse" value="2"> Tenho o cartão pra parcelar e quero grana à vista 
+									</label>
+								</div>
 								
-									<div class="form-group">
-										<label>Email</label> 
-										<input type="text" placeholder="Enter email" class="form-control" ng-model="username">
-										
-									</div>
-									<div class="form-group">
-										<label>Password</label> 
-										<input type="password" placeholder="Password" class="form-control" ng-model="password">
-									</div>
-									<div>
-										<button class="btn btn-sm btn-primary pull-right m-t-n-xs" ng-click="login()" >
-											<strong>Log in</strong>
-										</button>
-										<label> 
-											<input icheck type="checkbox" ng-model="rememberMe"> Remember me
-										</label>
-									</div>
-	
 							</div>
-							<div class="col-sm-8">
-								<h3 class="m-t-none m-b">Estou interessado em...</h3>
+							<div class="col-sm-8" ng-if="interesse.tipoDoInteresse == 1">
+								<h3 class="m-t-none m-b"></h3>
 	
-								<p>Sign in today for more expirience.</p>
+								<p>Show de bola! Detalhe bem direitinho o que você se interessa</p>
 	
 									<div class="form-group">
-										<label>Email</label> 
-										<input type="text" placeholder="Enter email" class="form-control" ng-model="username">
+										<label>Informe a descrição</label> 
+										<input type="text" class="form-control" ng-model="interesse.descricao">
+									</div>
+									<div class="form-group">
+										<label>E qual o Link do item? Se tiver, informe também...</label> 
+										<input type="text" class="form-control" ng-model="interesse.link">
+									</div>
+									<div class="row">
+										<div class="form-group col-sm-6">
+											<label>Agora o principal! Diz aí o valor cheio</label> 
+											<input type="text" class="form-control" ng-model="interesse.valorTotal">
+										</div>
+									</div>
+									<br/>
+										<p>e com relação as parcelas...</p>
+									<div class="row">
+										<div class="form-group col-sm-6">
+											<label>Qual o valor de uma parcela</label> 
+											<input type="text" class="form-control" ng-model="interesse.valorParcela">
+										</div>
+										<div class="form-group col-sm-6">
+											<label>e qual a quantidade de vezes?</label> 
+											<select class="form-control m-b col-sm-2" ng-model="interesse.quantidadeDeVezes">
+				                                <option value="1">1x</option>
+				                                <option value="2">2x</option>
+				                                <option value="3">3x</option>
+				                                <option value="4">4x</option>
+				                                <option value="5">5x</option>
+				                                <option value="6">6x</option>
+				                                <option value="7">7x</option>
+				                                <option value="8">8x</option>
+				                                <option value="9">9x</option>
+				                                <option value="10">10x</option>
+				                                <option value="11">11x</option>
+				                                <option value="12">12x</option>
+				                            </select>
+										</div>
 										
 									</div>
 									<div class="form-group">
-										<label>Password</label> 
-										<input type="password" placeholder="Password" class="form-control" ng-model="password">
+										<label>Se o valor tem desconto à vista, coloca aí</label> 
+										<input type="text" class="form-control" ng-model="interesse.valorAVista">
 									</div>
-									<div>
-										<button class="btn btn-sm btn-primary pull-right m-t-n-xs" ng-click="login()" >
-											<strong>Log in</strong>
+									<div class="form-group">
+										<label>e a informação que os lisos querem saber. Quanto de grana que você quer repassar?</label> 
+										<input type="text" class="form-control" ng-model="interesse.valorDoRepasse">
+									</div>
+									<br/>										
+									<div class="pull-right">
+										<p>Salva aí e fica tranquilo que agora é com a gente..</p> 
+										<button class="btn btn-sm btn-primary pull-right m-t-n-xs" ng-click="salvarInformacoes()" >
+											<strong>Salvar</strong>
 										</button>
-										<label> 
-											<input icheck type="checkbox" ng-model="rememberMe"> Remember me
-										</label>
 									</div>
+							</div>
+							<div class="col-sm-8" ng-if="interesse.tipoDoInteresse == 2">
+								<h3 class="m-t-none m-b"></h3>
+	
+								<p>Sabemos como é isso, cara. Mas não tem estresse, coloca um valor aí embaixo que você ta precisando que vamos te ajudar.</p>
+								<div class="row">
+									<div class="form-group col-sm-6">
+										<label>Cuida, coloca o valor...</label> 
+										<input type="text" class="form-control" ng-model="interesse.valorTotal">
+									</div>
+								</div>
+								<div class="pull-right">
+									<p>Salva aí e fica tranquilo que agora é com a gente..</p> 
+									<button class="btn btn-sm btn-primary pull-right m-t-n-xs" ng-click="salvarInformacoes()" >
+										<strong>Salvar</strong>
+									</button>
+								</div>
 							</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		</form>
 	</div>
 </div>
