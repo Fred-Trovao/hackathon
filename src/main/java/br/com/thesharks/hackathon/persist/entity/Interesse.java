@@ -1,14 +1,17 @@
 package br.com.thesharks.hackathon.persist.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import br.com.thesharks.hackathon.persist.entity.enums.TipoRepasseEnum;
 
 @Entity
 @Table(name = "interesse")
@@ -16,48 +19,30 @@ public class Interesse extends EntidadeAbstrata implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Column(name = "nome")
 	private String nome;
 
-	@Column(name = "link")
 	private String link;
 
-	@Column(name = "tipo_interesse")
-	private String tipoInteresse;
+	@Enumerated(EnumType.STRING)
+	private TipoRepasseEnum tipoInteresse;
 
-	@Column(name = "valor_total", nullable = false)
-	private Double valorTotal;
+	@Column(nullable = false)
+	private Double valorDoInteresse;
 
-	@Column(name = "valor_parcela")
-	private Double valorParcela;
+	private Double valorDaParcela;
 
-	@Column(name = "numero_de_parcelas")
-	private Integer numeroDeParcelas;
+	private BigDecimal valorDoRepasse;
 
-	@Column(name = "valor_a_vista")
-	private Double valorAVista;
+	private Integer quantidadeDeParcelas;
 
-	@Column(name = "juros")
-	private Double juros;
+	private BigDecimal juros;
 
 	@ManyToOne
+	@JoinColumn(nullable = false)
 	private Usuario usuario;
 
 	public Interesse() {
 		super();
-	}
-
-	public Interesse(String nome, String link, Double valorTotal, Double valorParcela, Integer numeroDeParcelas,
-			Double valorAVista, Double juros, Usuario usuario) {
-		super();
-		this.nome = nome;
-		this.link = link;
-		this.valorTotal = valorTotal;
-		this.valorParcela = valorParcela;
-		this.numeroDeParcelas = numeroDeParcelas;
-		this.valorAVista = valorAVista;
-		this.juros = juros;
-		this.usuario = usuario;
 	}
 
 	public String getNome() {
@@ -76,43 +61,51 @@ public class Interesse extends EntidadeAbstrata implements Serializable {
 		this.link = link;
 	}
 
-	public Double getValorTotal() {
-		return valorTotal;
+	public TipoRepasseEnum getTipoInteresse() {
+		return tipoInteresse;
 	}
 
-	public void setValorTotal(Double valorTotal) {
-		this.valorTotal = valorTotal;
+	public void setTipoInteresse(TipoRepasseEnum tipoInteresse) {
+		this.tipoInteresse = tipoInteresse;
 	}
 
-	public Double getValorParcela() {
-		return valorParcela;
+	public Double getValorDoInteresse() {
+		return valorDoInteresse;
 	}
 
-	public void setValorParcela(Double valorParcela) {
-		this.valorParcela = valorParcela;
+	public void setValorDoInteresse(Double valorDoInteresse) {
+		this.valorDoInteresse = valorDoInteresse;
 	}
 
-	public Integer getNumeroDeParcelas() {
-		return numeroDeParcelas;
+	public Double getValorDaParcela() {
+		return valorDaParcela;
 	}
 
-	public void setNumeroDeParcelas(Integer numeroDeParcelas) {
-		this.numeroDeParcelas = numeroDeParcelas;
+	public void setValorDaParcela(Double valorDaParcela) {
+		this.valorDaParcela = valorDaParcela;
 	}
 
-	public Double getValorAVista() {
-		return valorAVista;
+	public BigDecimal getValorDoRepasse() {
+		return valorDoRepasse;
 	}
 
-	public void setValorAVista(Double valorAVista) {
-		this.valorAVista = valorAVista;
+	public void setValorDoRepasse(BigDecimal valorDoRepasse) {
+		this.valorDoRepasse = valorDoRepasse;
 	}
 
-	public Double getJuros() {
+	public Integer getQuantidadeDeParcelas() {
+		return quantidadeDeParcelas;
+	}
+
+	public void setQuantidadeDeParcelas(Integer quantidadeDeParcelas) {
+		this.quantidadeDeParcelas = quantidadeDeParcelas;
+	}
+
+	public BigDecimal getJuros() {
 		return juros;
 	}
 
-	public void setJuros(Double juros) {
+	public void setJuros(BigDecimal juros) {
 		this.juros = juros;
 	}
 
@@ -122,20 +115,6 @@ public class Interesse extends EntidadeAbstrata implements Serializable {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
-	}
-
-	public static void main(String[] args) throws JsonProcessingException {
-		ObjectMapper om = new ObjectMapper();
-
-		System.out.println(om.writeValueAsString(new Interesse()));
-	}
-
-	public String getTipoInteresse() {
-		return tipoInteresse;
-	}
-
-	public void setTipoInteresse(String tipoInteresse) {
-		this.tipoInteresse = tipoInteresse;
 	}
 
 }
