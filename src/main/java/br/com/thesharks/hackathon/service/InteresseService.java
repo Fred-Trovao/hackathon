@@ -45,7 +45,7 @@ public class InteresseService extends GenericService<Interesse> {
 
 		List<Interesse> interesses = getByUsuario(usuario);
 		
-		if(interesses == null && interesses.isEmpty()){
+		if(interesses == null || interesses.isEmpty()){
 			throw new EntidadeNaoEncontradaException("Qual seu interesse? Casdastre-o para que a gente possa lhe ajudar.");
 		}
 		

@@ -67,7 +67,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.headers().disable().csrf().disable().authorizeRequests().antMatchers("/failure").permitAll()
 				.antMatchers("/v2/api-docs").hasAnyAuthority("admin")
-				.antMatchers("/users/**").hasAnyAuthority("admin")
 				.anyRequest().authenticated().and().exceptionHandling()
 				.authenticationEntryPoint(restAuthenticationEntryPoint).accessDeniedHandler(restAccessDeniedHandler)
 				.and().formLogin().loginProcessingUrl("/authenticate").successHandler(restAuthenticationSuccessHandler)
