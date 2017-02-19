@@ -37,7 +37,7 @@ public class Usuario extends EntidadeAbstrata implements Serializable {
 	@Column(name = "telefone", length = 20)
 	private String telefone;
 
-	@Column(name = "login", nullable = false, length = 20)
+	@Column(name = "login", nullable = false, length = 50)
 	private String login;
 
 	@Column(name = "senha", nullable = false, length = 20)
