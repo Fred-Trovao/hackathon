@@ -17,12 +17,12 @@
 								<p>No que você está interessado?</p>
 								<div class="form-group">
 									<label> 
-										<input icheck type="radio" name="radioInteresse" ng-model="interesse.tipoInteresse" value="REPASSE"> Tenho grana mas quero ajudar o próximo
+										<input icheck type="radio" name="radioInteresse" ng-model="interesse.tipoInteresse" value="REPASSE"> Em pegar minha grana e repassar ajudar o próximo
 									</label>
 								</div>
 								<div class="form-group">
 									<label> 
-										<input icheck type="radio" name="radioInteresse" ng-model="interesse.tipoInteresse" value="RECEBER"> Tenho o cartão pra parcelar e quero grana à vista 
+										<input icheck type="radio" name="radioInteresse" ng-model="interesse.tipoInteresse" value="RECEBER"> Receber o dinheiro vivo e dividir no cartão a compra do meu novo amigo 
 									</label>
 								</div>
 								
@@ -47,8 +47,8 @@
 										</div>
 									</div>
 									<br/>
-										<p>e com relação as parcelas...</p>
-									<div class="row">
+										<p ng-if="!interesse.link">e com relação as parcelas...</p>
+									<div class="row"  ng-if="!interesse.link">
 										<div class="form-group col-sm-6">
 											<label>Qual o valor de uma parcela</label> 
 											<input type="text" class="form-control" ng-model="interesse.valorParcela" ui-money-mask>
@@ -71,10 +71,6 @@
 				                            </select>
 										</div>
 										
-									</div>
-									<div class="form-group">
-										<label>Se o valor tem desconto à vista, coloca aí</label> 
-										<input type="text" class="form-control" ng-model="interesse.valorAVista" ui-money-mask>
 									</div>
 									<div class="form-group">
 										<label>e a informação que os lisos querem saber. Quanto de grana que você quer repassar?</label> 

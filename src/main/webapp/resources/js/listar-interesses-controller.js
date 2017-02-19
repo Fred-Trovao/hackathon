@@ -1,5 +1,7 @@
 angular.module('inspinia').controller('ListarInteressesController', function($rootScope, $scope, AuthSharedService, $http, $uibModal) {
     
+	$scope.listaInteressados = [];
+	
 	this.listarInteresses = function(){
 		
 		$http({
@@ -8,8 +10,9 @@ angular.module('inspinia').controller('ListarInteressesController', function($ro
 				
 		}).then(function sucesso(response){
 			console.log(response);
+			$scope.listaInteressados = response.data;
 		}, function erro(response){
-			swal("Oops...", "Algo deu muito errado :(", "error");
+			swal("Oops...", response.data.message, "error");
 		});
 	}
 	
@@ -52,36 +55,36 @@ angular.module('inspinia').controller('ListarInteressesController', function($ro
 		
 	];
 	
-	$scope.listaInteressados = [
-		{
-			id : 1,
-			valorDoInteresse : 2000.00,
-			usuario : {
-				endereco : {
-					cidade : 'João Pessoa',
-					estado : 'PB',
-				},
-				nome : 'Monica Smith',
-				email : 'monica@msn.com',
-				telefone : '83 99999-9999',
-			}
-		},
-		{
-			id : 2,
-			valorDoInteresse : 34234.00,
-			valorDoRepasse : 3400.51,
-			usuario : {
-				endereco : {
-					cidade : 'João Pessoa',
-					estado : 'PB',
-				},
-				nome : 'Mark Johnson',
-				email : 'mark@msn.com',
-				telefone : '83 88888-8888',
-			}
-		},
-		
-	];
+//	$scope.listaInteressados = [
+//		{
+//			id : 1,
+//			valorDoInteresse : 2000.00,
+//			usuario : {
+//				endereco : {
+//					cidade : 'João Pessoa',
+//					estado : 'PB',
+//				},
+//				nome : 'Monica Smith',
+//				email : 'monica@msn.com',
+//				telefone : '83 99999-9999',
+//			}
+//		},
+//		{
+//			id : 2,
+//			valorDoInteresse : 34234.00,
+//			valorDoRepasse : 3400.51,
+//			usuario : {
+//				endereco : {
+//					cidade : 'João Pessoa',
+//					estado : 'PB',
+//				},
+//				nome : 'Mark Johnson',
+//				email : 'mark@msn.com',
+//				telefone : '83 88888-8888',
+//			}
+//		},
+//		
+//	];
 	
 	$scope.abrirModal = function (usuario) {
         var modalInstance = $uibModal.open({

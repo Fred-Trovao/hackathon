@@ -13,24 +13,24 @@
 				
 					<div>
 		                <div class="feed-activity-list">
-		
-		                    <div ng-repeat="interesse in listaInteressados" class="feed-element">
+							<div ng-repeat="interesse in listaInteressados">	
+		                    <div ng-if="interesse.tipoInteresse == 'RECEBER'" class="feed-element">
 		                        <a ui-sref="profile" class="pull-left">
 		                            <img alt="image" class="img-circle" src="resources/img/a5.jpg">
 		                        </a>
 		
 		                        <div class="media-body ">
 		                            <small class="pull-right">5m atrás</small>
-		                            <strong>{{interesse.usuario.nome}}</strong><br>
-		                            <small class="text-muted">a moça tem um crédito no cartão de...</small>
+		                            <strong>{{interesse.usuario.nome}}</strong> falou que tem um crédito no cartão de...<br>
 									<div class="col-sm-10">
-										<p class="h3"><span class="fa fa-credit-card"></span>&nbsp;&nbsp; R$ {{interesse.valorDoInteresse}}</p>
+										<p class="h3"><span class="fa fa-credit-card"></span>&nbsp;&nbsp; <span> R$ {{interesse.valorDoInteresse}}</span></p>
 									</div>
 									<div class="col-sm-2">
 										<button class="btn btn-primary pull-right" ng-click="abrirModal(interesse.usuario)">Contato</button>
 									</div>
 		                        </div>
 		                        	
+		                    </div>
 		                    </div>
 		                    
 		                </div>
@@ -57,8 +57,8 @@
 				
 					<div>
 		                <div class="feed-activity-list">
-		
-		                    <div ng-repeat="interesse in listaInteresse">
+							<div ng-repeat="interesse in listaInteressados">
+		                    <div ng-if="interesse.tipoInteresse == 'REPASSE'" >
 			                    
 			                    <div ng-if="interesse.link" class="feed-element">
 			                        <a ui-sref="profile" class="pull-left">
@@ -72,7 +72,7 @@
 			                            <span class="text-muted"> encontrado no link</span> <a href="{{interesse.link}}"> {{interesse.link}}</a><br><br>
 										<p>o interesse custa <span class="h5">R$ {{interesse.valorDoInteresse}}</span>, e o que ela quer te repassar é <span class="h4"><strong>R$ {{interesse.valorDoRepasse}}</strong></span>. O resto é contigo</p>
 										<div class="col-sm-12">
-											<button class="btn btn-primary pull-right">Contato</button>
+											<button class="btn btn-primary pull-right" ng-click="abrirModal(interesse.usuario)">Contato</button>
 										</div>
 			                        </div>
 			                        	
@@ -91,10 +91,11 @@
 										<p>O valor da parcela é <span class="h5"><strong>R$ {{interesse.valorDaParcela}}</strong></span> e pode ser dividido em até <span class="h5"><strong>{{interesse.quantidadeDeParcelas}}x</strong></span></p>
 										<p>o interesse custa no total <span class="h5">R$ {{interesse.valorDaParcela}}</span>, e o que ela quer te repassar é <span class="h4"><strong>R$ {{interesse.valorDoRepasse}}</strong></span>. Faz as contas e veja dá</p>
 										<div class="col-sm-12">
-											<button class="btn btn-primary pull-right">Contato</button>
+											<button class="btn btn-primary pull-right" ng-click="abrirModal(interesse.usuario)">Contato</button>
 										</div>
 			                        </div>
 			                    </div>
+		                    </div>
 		                    </div>
 		                    
 		                </div>

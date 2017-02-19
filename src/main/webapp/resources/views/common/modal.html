@@ -4,22 +4,17 @@
         <small class="font-bold">Vamos, lá. Pega os dados e entra em contato. É por uma boa causa...</small>
     </div>
     <div class="modal-body">
-						<div>
-		
-		                    <div class="feed-element">
-		                        <a ui-sref="profile" class="pull-left">
-		                            <img alt="image" class="img-circle" src="resources/img/a5.jpg">
-		                        </a>
-		
-		                        <div class="media-body ">
-		                            <strong>{{usuarioModal.nome}}</strong><br>
-		                            <p class="text-muted">O e-mail de contato é <span class="h4"><strong>{{usuarioModal.email}}</strong></span> e o telefone de contato pode ligar para <span class="h4"><strong>{{usuarioModal.telefone}}</strong></span></p>
-									
-		                        </div>
-		                        	
-		                    </div>
-		                    
-		                </div>
+		<div>
+			<div class="feed-element">
+		    	<a ui-sref="profile" class="pull-left">
+		    		<img alt="image" class="img-circle" src="resources/img/a5.jpg">
+		    	</a>
+		        <div class="media-body ">
+		        	<strong>{{usuarioModal.nome}}</strong><br>
+		            <p class="text-muted">O e-mail de contato é <span class="h4"><strong>{{usuarioModal.login}}</strong></span> e o telefone de contato pode ligar para <span class="h4"><strong>{{usuarioModal.telefone}}</strong></span></p>
+				</div>
+		   </div>
+		</div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-white" ng-click="cancel()">Fechar</button>
