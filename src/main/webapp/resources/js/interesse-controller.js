@@ -3,6 +3,7 @@ angular.module('inspinia').controller('InteresseController', function($state, $r
     $scope.interesse.tipoDoInteresse = '';
     
 	$scope.salvarInformacoes = function(){
+		if($scope.interesse.valorDoInteresse > 0){
 		$http.post("/interesses/salvarInteresse",$scope.interesse).success(function(response) {
 	        console.log("Interesse cadastrado com sucesso!");
 	        swal("Aeee", "Tudo Certo!", "success");
@@ -11,6 +12,10 @@ angular.module('inspinia').controller('InteresseController', function($state, $r
 	    }).error(function(response) {
 	    	swal("Oops...", "Algo deu muito errado :(", "error");
 	    });
+		}
+		else{
+			swal("Ta de brincadeira!", "Informe pelo menos algum valor! :(", "error");
+		}
     	
     }
 });

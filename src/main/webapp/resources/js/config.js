@@ -27,17 +27,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, USER_RO
 	url : "/main",
 	templateUrl : "resources/views/main.html",
 	data : {
-	    pageTitle : 'Example view'
-	},
-	access : {
-	    loginRequired : true,
-	    authorizedRoles : [ USER_ROLES.all ]
-	}
-    }).state('index.minor', {
-	url : "/minor",
-	templateUrl : "resources/views/minor.html",
-	data : {
-	    pageTitle : 'Example view'
+	    pageTitle : 'Menu Principal'
 	},
 	access : {
 	    loginRequired : true,

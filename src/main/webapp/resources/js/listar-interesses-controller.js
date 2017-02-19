@@ -11,7 +11,7 @@ angular.module('inspinia').controller('ListarInteressesController', function($ro
 		});
 	}
 	
-	listarInteresses();
+	this.listarInteresses();
 	
 	$scope.listaInteresse = [
 		{
